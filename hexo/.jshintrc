@@ -1,5 +1,11 @@
 {
-    "undef": true,
-    "unused": true,
-    "predef": [ "console" ]
+  /**
+   * jshintrc config
+   *
+   * link: http://jshint.com/docs/options/
+   */
+
+  "undef": true,
+  "unused": true,
+  "predef": [ "console" ]
 }
