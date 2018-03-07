@@ -25,6 +25,13 @@ More info: [Server](https://hexo.io/docs/server.html)
 ``` bash
 $ hexo generate
 ```
+
+### clean static files
+
+``` bash
+$ hexo clean
+```
+
 ### theme user doc
 
 [tranquilpeak user doc](https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/blob/master/docs/user.md)

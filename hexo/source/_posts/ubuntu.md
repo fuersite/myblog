@@ -1,11 +1,11 @@
 ---
 title: ubuntu
 date: 2018-02-08 13:32:49
-categories: os
 thumbnailImagePosition: right
 autoThumbnailImage: yes
 archive_pagination: 1
 thumbnailImage: http://fuersite.coding.me/images/ubuntu.png
+categories: os
 tags:
   - ubuntu
 ---
@@ -21,7 +21,46 @@ ubuntu 常用操作
 - 返回上一次所在目录
 > $ cd -
 
-- 文件管理
+- 用户管理
+> useradd -d /home/ivin -m ivin //创建新用户，并生成用户目录
+> passwd ivin //设置用户登录密码
+
+- 创建全局环境变量
+
+1. 方法一：修改用户目录下的 .bashrc 文件， `$PATH` 表示原有全局变量
+例如：
+```
+vim ~/.bashrc  //打开
+export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH　//　设置
+source ~/.bashrc　//　立即生效
+```
+2. 方法二：修改系统的 etc 目录下，有一个 profile 文件
+例如：　
+```
+vim /etc/profile
+export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH　//　设置
+source　/etc/profile　//　立即生效
+```
+
+3. 方法三：　修改系统目录下的 environment 文件
+例如：　
+```
+vim /etc/environment
+找到以下的 PATH 变量：
+PATH="<......>"
+修改该 PATH 变量，在其中加入自己的path即可，例如：
+PATH="~/mypath/bin:<......>"
+source /etc/environment　//　立即生效
+```
+
+4. 方法四：　直接在shell下用export命令修改，设置临时全局变量
+```
+export PATH=/opt/android-studio/bin:$PATH
+```
+
+
+
+-  文件管理
 > ls -a //查看全部文件（包含隐性文件）
 > ls -l //　查看文件详细信息
 > mkdir folderName //创建一个目录

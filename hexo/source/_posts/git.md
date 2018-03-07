@@ -5,6 +5,7 @@ thumbnailImagePosition: right
 autoThumbnailImage: yes
 archive_pagination: 1
 thumbnailImage: http://fuersite.coding.me/images/git.png
+categories: devTool
 tags:
   - git
 ---
