@@ -31,7 +31,10 @@ $ hexo generate
 ``` bash
 $ hexo clean
 ```
-
+### add search index
+```
+hexo algolia
+```
 ### theme user doc
 
 [tranquilpeak user doc](https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/blob/master/docs/user.md)
