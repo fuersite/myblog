@@ -38,5 +38,5 @@ hexo algolia
 ### theme user doc
 
 [tranquilpeak user doc](https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/blob/master/docs/user.md)
-
+[tranquilpeak user doc](https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/blob/master/DOCUMENTATION.md)
 ### more command you can see package.json
