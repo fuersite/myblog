@@ -7,7 +7,7 @@ tags:
   - koa2
 ---
 
-# ko2起步与成圣之路
+ko2 从零到亿
 <!-- more -->
 - 当前环境:
    ubuntu: 14.04
@@ -110,6 +110,81 @@ const app = new Koa()
 ```
 $ npm run dev
 ```
-项目启动
+项目启动后,可以在非入口文件中使用es6语法了, `注意` index.js 中还有要使用原生语法,因为babel时在index才引入的.
 
-### 使用路由访问
+### 路由
+1. 编写route.js 文件
+  ——　这里编写了两个路由，一个同步，一个异步。
+
+  <pre><code class="javascript">
+    const Router = require('koa-router')
+    const router = new Router()
+
+    router.get('/user/profile', 'Hi client')
+    router.get('/user', async ctx => {
+      const sleep = async (ms) => {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            let data = 'welcome Koa2'
+            resolve(data)
+          }, ms)
+        } )
+      }
+      ctx.body = await sleep(4000)
+    })
+
+    module.exports = router
+  </code></pre>
+
+2. 在index.js 中引入route文件
+
+  <pre><code  class="javascript">
+    const router = require('./router')
+    app
+      .use(router.routes())
+      .use(router.allowedMethods())
+  </code></pre>
+
+3. 浏览器访问：　http://localhost:3000/user， 返回　welcome Koa2
+
+
+### 上下文(Context)
+Koa Context 将 node 的 request 和 response 对象封装到单个对象中，为编写 Web 应用程序和 API 提供了许多有用的方法。 这些操作在 HTTP 服务器开发中频繁使用，它们被添加到此级别而不是更高级别的框架，这将强制中间件重新实现此通用功能。
+_每个_ 请求都将创建一个 Context，并在中间件中作为接收器引用，或者 ctx 标识符，如以下代码
+<pre><code  class="javascript">
+app.use(async (ctx, next) => {
+  console.log('first11 context', '-----------------------------------')
+  await next()
+  console.log('first12 context', '-----------------------------------')
+})
+app.use(ctx => {
+  console.log('second21 context', '----------------------------------')
+})
+</code></pre>
+执行结果：
+
+```
+first11 context -----------------------------------
+second21 context ----------------------------------
+first12 context -----------------------------------
+
+```
+其实中间件很像我们所熟悉的拦截器，　执行顺序　Ａ --wait-> B --wait-> C--(done request and response) --callback-> B --callback-> A.
+经过middleware层层过滤后在处理请求，处理完后，在进行回调。如果前面有中间层进行response了就不会再执行后面的middleware
+所以你需要吧处理请求(route)的放到最后处理,　路由（route）也是作为一个中间件在应用程序中。看下面代码：
+<pre><code  class="javascript">
+  app.use(async (ctx, next) => {
+    console.log('first11 context', '-----------------------------------')
+    await next()
+    console.log('first12 context', '-----------------------------------')
+  })
+  app.use(async (ctx, next) => {
+    console.log('second21 context', '----------------------------------')
+    await next()
+  })
+  app
+    .use(router.routes())
+    .use(router.allowedMethods())
+</code></pre>
+middleware 使用await async 异步进行了级联
+
