@@ -5,7 +5,7 @@ categories: javascript
 tags:
   - javascript
   - 事件
-  - onblur
+  - onblurｌ
 ---
 
 JS Onblur 与Onclick事件冲突的解决办法
