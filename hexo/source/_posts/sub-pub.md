@@ -4,7 +4,8 @@ date: 2018-05-15 16:54:35
 categories: javascript
 tags:
   - javascript
-  - 事件
+  - 发布者-订阅者事件
+  - 原生javascript 数据的双向绑定
 ---
 
 发布-订阅者模式

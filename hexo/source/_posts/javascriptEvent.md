@@ -4,7 +4,7 @@ date: 2018-05-11 14:02:41
 categories: javascript
 tags:
   - javascript
-  - 事件
+  - 自定义事件
 ---
 
 create own event and add watch

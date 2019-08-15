@@ -8,7 +8,7 @@ thumbnailImage: http://fuersite.coding.me/images/php.png
 categories: javascript
 tags:
   - php
-  - server
+  - php 生命周期
 ---
 
 学习框架先从生命周期开始

@@ -7,6 +7,7 @@ autoThumbnailImage: yes
 archive_pagination: 1
 tags:
   - server
+  - 服务端
   - nginx
 ---
 ngnix 使用与配置

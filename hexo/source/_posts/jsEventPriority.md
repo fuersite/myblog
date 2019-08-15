@@ -4,8 +4,7 @@ date: 2018-04-24 17:21:33
 categories: javascript
 tags:
   - javascript
-  - 事件
-  - onblurｌ
+  - onblur,Onclick 冲突
 ---
 
 JS Onblur 与Onclick事件冲突的解决办法

@@ -85,7 +85,7 @@ sidebar:
         #     icon: linkedin
         # mail:
         #     title: global.mail
-        #     url: mailto:
+        #     url: https://mail.qq.com/
         #     icon: envelope-o
     # rss:
     #     rss:
@@ -196,6 +196,8 @@ tag_pagination: true
 disqus_shortname:
 # Your Gitment information
 # Read https://github.com/imsun/gitment#get-started to setup Gitment
+# https://gh-oauth.imsun.net 接口已经替换成https://github.com/login/oauth/access_token
+# https://xiaotiandi.github.io/publicBlog/2018-09-19-d196c9ad.html
 gitment:
     # Switch
     enable: true

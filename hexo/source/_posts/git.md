@@ -1,5 +1,5 @@
 ---
-title: git
+title: git 安装与使用
 date: 2018-02-03 12:45:03
 thumbnailImagePosition: right
 autoThumbnailImage: yes
@@ -168,3 +168,41 @@ $ vim ~/.gitconfig //可查看配置文件
 或者
 $ git config --global  --list
 ```
+
+- reset 、 revert 区别
+都是回退修改，reset 直接删除commit及其修改，revert生成一个新的commit来回退删除指定commit修改。 revert时如果有冲突的话
+，解决冲突之后 可以 revert --continue , 如果不解决，想撤销回退，可以 revert --abort 
+r
+例： 已经存在两个commit
+  ```bash
+  commit2
+  commit1
+  ```
+
+  git reset HEAD 结果
+  ```
+  commit1
+  ```
+
+  git revert HEAD 结果
+  ```
+  Revert commit2
+  commit2
+  commit1
+  ```
+
+- 删除本地和远程分支
+
+  ```
+  删除本地分支
+  git branch -D branchName
+
+  删除本地远程分支
+  git branch -r -d origin/branchName
+
+  删除远程分支
+  git push origin -d remoteBranchName 
+  或
+  git push origin :remoteBranchName
+  ```
+
