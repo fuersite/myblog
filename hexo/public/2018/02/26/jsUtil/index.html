@@ -1,0 +1,956 @@
+
+<!DOCTYPE html>
+<html lang="en,zh-cn,default">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="baidu-site-verification" content="PvLt8NSpTt" />
+    <meta name="generator" content="恬淡如诗，烈火如歌">
+    <title>js 常用开发操作 - 恬淡如诗，烈火如歌</title>
+    <meta name="author" content="虚空生花">
+    
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <meta name="description" content="DOM选择，数组排序， 遍历，　去重，　字符串处理，　类型转换，　正则表达式，　日期时间处理, 拷贝, 相等问题">
+<meta name="keywords" content="javascript,日期处理,遍历,正则表达式">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="js 常用开发操作">
+<meta property="og:url" content="http://fuersite.coding.me/2018/02/26/jsUtil/index.html">
+<meta property="og:site_name" content="恬淡如诗，烈火如歌">
+<meta property="og:description" content="DOM选择，数组排序， 遍历，　去重，　字符串处理，　类型转换，　正则表达式，　日期时间处理, 拷贝, 相等问题">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-11-15T14:07:19.628Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js 常用开发操作">
+<meta name="twitter:description" content="DOM选择，数组排序， 遍历，　去重，　字符串处理，　类型转换，　正则表达式，　日期时间处理, 拷贝, 相等问题">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://fuersite.coding.me/assets/images/favicon.jpg"/>
+    
+    
+    
+    
+    <!-- code highlight -->
+    <link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/solarized_dark.min.css">
+    <script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+    <script src="https://hm.baidu.com/hm.js?231aaeebdac35a97af1cd3bfe845b227"></script>
+    <script defer>hljs.initHighlightingOnLoad();</script>
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-pz4cc6y13wt2trzqa8l3n9v0yykr0sstdaheem7qj628nhjmhp9pfawvqawz.min.css">
+    <!--STYLES END-->
+    
+
+    
+    <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?231aaeebdac35a97af1cd3bfe845b227";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+
+    
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+
+
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+<header id="header" data-behavior="5">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">恬淡如诗，烈火如歌</a>
+    </div>
+    
+        
+            <a  class="header-right-icon open-algolia-search"
+                href="#search">
+        
+        
+            <i class="fa fa-lg fa-search"></i>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="5">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/favicon.jpg" alt="Ivin Chow"/>
+                </a>
+                <h4 class="sidebar-profile-name">虚空生花</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>purchase perfect</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/ "
+                            
+                            title="Home"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-categories"
+                            
+                            title="Categories"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-tags"
+                            
+                            title="Tags"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link open-algolia-search"
+                             href="#search"
+                            
+                            title="Search"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-search" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Search</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="#about"
+                            
+                            title="About"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-question" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">About</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://github.com/fuersite/fuersite.github.io" target="_blank" rel="noopener" title="GitHub">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+        <ul class="sidebar-buttons">
+          <li class="sidebar-button">
+            <a class="sidebar-button-link" href="javascript:void(0)" title="访问总人数">
+                <i class="sidebar-button-icon fa fa-lg fa-eye" aria-hidden="true"></i>
+                <span class="sidebar-button-desc"> TotalVisitor <span id="busuanzi_value_site_uv"></span>
+                </span>
+            </a>
+          </li>
+        </ul>
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="5"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            js 常用开发操作
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time itemprop="datePublished" datetime="2018-02-26T15:40:53+08:00">
+	
+		    Feb 26, 2018
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/all-categories/javascript/">javascript</a>
+
+
+    
+</div>
+
+    
+    <span id="busuanzi_container_page_pv" style="font-size: 1.2rem; color: #9eabb3;">
+        <a href="javascript:void(0);" title="阅读总量"><i class="fa fa-lg fa-eye"></i>  <span id="busuanzi_value_page_pv" style="font-size: 1.5rem"></span></a>
+    </span>
+</div>
+
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>DOM选择，数组排序， 遍历，　去重，　字符串处理，　类型转换，　正则表达式，　日期时间处理, 拷贝, 相等问题<br><a id="more"></a></p>
+<h3 id="DOM-选择"><a href="#DOM-选择" class="headerlink" title="DOM 选择"></a>DOM 选择</h3><h4 id="js-元素选择器"><a href="#js-元素选择器" class="headerlink" title="js 元素选择器"></a>js 元素选择器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div name=&quot;divName&quot; id=&quot;divId&quot; class=&quot;divClass&quot;&gt; &lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>getElementById()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var div = document.getElementById(&apos;DivId&apos;);</span><br></pre></td></tr></table></figure></p>
+<p>getElementsByTagName()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var div = document.getElementsByTagName(&apos;div&apos;);</span><br></pre></td></tr></table></figure></p>
+<p>getElementsByName()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var div = document.getElementsByName(&apos;divName&apos;);</span><br></pre></td></tr></table></figure></p>
+<p>getElementsByClassName()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var div = document.getElementsByClassName(&apos;divClass&apos;);</span><br></pre></td></tr></table></figure></p>
+<p> document.all 返回所有元素<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(document.all)</span><br></pre></td></tr></table></figure></p>
+<h4 id="css-选择器"><a href="#css-选择器" class="headerlink" title="css 选择器"></a>css 选择器</h4><p>querySelector返回的是一个对象，querySelectorAll返回的一个集合(NodeList)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">document.querySelector(&quot;.divClass&quot;);</span><br><span class="line">document.querySelectorAll(&quot;.divClass&quot;)[0];</span><br></pre></td></tr></table></figure>
+<h4 id="jquery选择器"><a href="#jquery选择器" class="headerlink" title="jquery选择器"></a>jquery选择器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 元素选择器</span><br><span class="line">$(&quot;p.intro&quot;) 选取所有 class=&quot;intro&quot; 的 &lt;p&gt; 元素。</span><br><span class="line">// 属性选择器</span><br><span class="line">$(&quot;[href=&apos;#&apos;]&quot;) 选取所有带有 href 值等于 &quot;#&quot; 的元素。</span><br><span class="line">// css选择器</span><br><span class="line">$(&quot;p&quot;).css(&quot;background-color&quot;,&quot;red&quot;);</span><br></pre></td></tr></table></figure>
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><h4 id="sort-默认排序顺序是根据字符串Unicode码-默认升序"><a href="#sort-默认排序顺序是根据字符串Unicode码-默认升序" class="headerlink" title="sort() 默认排序顺序是根据字符串Unicode码,默认升序"></a>sort() 默认排序顺序是根据字符串Unicode码,默认升序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var arr = [4,3,6,5,7,2,&apos;a&apos;];</span><br><span class="line">arr.sort();</span><br><span class="line">(7) [2, 3, 4, 5, 6, 7, &quot;a&quot;]</span><br></pre></td></tr></table></figure>
+<h4 id="sort-function-a-b-自定义比较器"><a href="#sort-function-a-b-自定义比较器" class="headerlink" title="sort(function(a,b){})　自定义比较器"></a>sort(function(a,b){})　自定义比较器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr.sort(function(a,b)&#123;</span><br><span class="line">return a - b;// 生序，　b-a 降序，升降根据返回正负；</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h4><h6 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a><code>快速排序</code></h6><p>js 实现１</p>
+<pre><code>function quick(arr){
+  if(arr.length&lt;=1){
+    return arr;
+  }
+  var left = [];
+  var right = [];
+  var base = arr[0];
+  for(var i=1;i&lt;arr.length;i++)
+  {
+   // 判决条件
+    if(arr[i]&gt;base){
+      right.push(arr[i]);
+    }else {
+      left.push(arr[i])
+    }
+  }
+  return quick(left).concat(base,quick(right));
+}
+</code></pre><p>js 实现2</p>
+<pre><code>let swap = function (arr, a, b) {
+  arr[a] = arr[a] ^ arr[b];
+  arr[b] = arr[a] ^ arr[b];
+  arr[a] = arr[a] ^ arr[b];
+}
+
+function partition(arr, start, end) {
+  let key = arr[end];
+  while (start &lt; end) {
+    while(start &lt; end &amp;&amp; arr[start] &lt;= key) {
+      start++;
+    }
+
+    if (arr[start] &gt; key) {
+      swap(arr, start, end);
+    }
+
+    while(start &lt; end &amp;&amp; arr[end] &gt; key) {
+      end--;
+    }
+
+    if (arr[end] &lt; key) {
+      swap(arr, start, end);
+    }
+  }
+  return start;
+}
+
+function quickSort(arr, start, end) {
+  if (start == end) return;
+
+  let index = partition(arr, start, end);
+  if (index &gt; start) {
+    quickSort(arr, start, index - 1);
+  }
+  if (index &lt; end) {
+    quickSort(arr, index + 1, end);
+  }
+}
+
+function sort(_arr) {
+  if(!((_arr instanceof Array) &amp;&amp; _arr.length)){
+    return _arr;
+  }
+
+  let arr = _arr.slice();
+  quickSort(arr, 0, arr.length - 1);
+  return arr;
+}
+
+let arr = [5,0,4,6,5,10,300,2];
+console.log(sort(arr));
+</code></pre><h3 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h3><p><font size="4" color="#A52A2A"><code>for in</code></font>适合遍历对象属性，输出键<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for(var i in arr)&#123;</span><br><span class="line">　console.log(i+&apos;   &apos;+arr[i]);//这时的i为键值（string类型），非数组索引</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><font size="4" color="#A52A2A"><code>for of</code> </font>遍历数组的每一项<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for(var value of Arr)&#123;</span><br><span class="line">    console.log(value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><font size="4" color="#A52A2A"> <code>forEach()</code></font> 方法是ES5.1标准引入的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr.forEach(function(v,i)&#123;//v==value　为arr项，i==index　为arr索引</span><br><span class="line">    console.log(i+&apos;  &apos;v );</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>ES6 提供三个新的方法—— <font size="4" color="#A52A2A"> <code>entries()，keys(), values()</code></font>——用于遍历数组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">for (let index of [&apos;a&apos;, &apos;b&apos;].keys()) &#123;</span><br><span class="line">  console.log(index);</span><br><span class="line">&#125;</span><br><span class="line">// 0</span><br><span class="line">// 1</span><br><span class="line"></span><br><span class="line">for (let elem of [&apos;a&apos;, &apos;b&apos;].values()) &#123;</span><br><span class="line">  console.log(elem);</span><br><span class="line">&#125;</span><br><span class="line">// &apos;a&apos;</span><br><span class="line">// &apos;b&apos;</span><br><span class="line"></span><br><span class="line">for (let [index, elem] of [&apos;a&apos;, &apos;b&apos;].entries()) &#123;</span><br><span class="line">  console.log(index, elem);</span><br><span class="line">&#125;</span><br><span class="line">// 0 &quot;a&quot;</span><br><span class="line">// 1 &quot;b&quot;</span><br></pre></td></tr></table></figure></p>
+<h3 id="去重"><a href="#去重" class="headerlink" title="去重"></a>去重</h3><p>使用<code>indexOf</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function unique1(array)&#123;</span><br><span class="line">var n = [];</span><br><span class="line">for(var i = 0; i &lt; array.length; i++)&#123;</span><br><span class="line">    if (n.indexOf(array[i]) == -1) n.push(array[i]);</span><br><span class="line">    &#125;</span><br><span class="line">   return n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>ES6 <code>Set</code>集合去重<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var arr = [...new Set(array)]</span><br></pre></td></tr></table></figure></p>
+<h3 id="字符串处理"><a href="#字符串处理" class="headerlink" title="字符串处理"></a>字符串处理</h3><h6 id="字符串与数组的分分合合"><a href="#字符串与数组的分分合合" class="headerlink" title="字符串与数组的分分合合"></a>字符串与数组的分分合合</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var str = &quot;字符串转数组&quot;;</span><br><span class="line">var arr = str.split(&quot;&quot;); //var arr=s1.split(&quot;，&quot;)　分割符</span><br><span class="line">//利用数组reverse()方法实现反转</span><br><span class="line">arr.reverse();</span><br><span class="line">//利用数组的join()方法转换为字符串</span><br><span class="line">var str = arr.join(&quot;&quot;);</span><br><span class="line">console.log(str);</span><br><span class="line">VM1224:3 组数转串符字</span><br></pre></td></tr></table></figure>
+<h6 id="字符串替换-stringObject-replace-regexp-substr-replacement"><a href="#字符串替换-stringObject-replace-regexp-substr-replacement" class="headerlink" title="字符串替换　stringObject.replace(regexp/substr,replacement)"></a>字符串替换　stringObject.replace(regexp/substr,replacement)</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var str = &quot;AABBCC&quot;;</span><br><span class="line">var　newStr =  str.replace(/BB/, &apos;cc&apos;);</span><br><span class="line">console.log(newStr);</span><br><span class="line">VM1224:3 AAccCC</span><br></pre></td></tr></table></figure>
+<h6 id="json字符串和json对象转换-JSON-parse-JSON-stringify"><a href="#json字符串和json对象转换-JSON-parse-JSON-stringify" class="headerlink" title="json字符串和json对象转换 JSON.parse, JSON.stringify"></a>json字符串和json对象转换 JSON.parse, JSON.stringify</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var str = &apos;&#123;&quot;name&quot;:&quot;ivin&quot;,&quot;age&quot;:&quot;24&quot;&#125;&apos;</span><br><span class="line">var object = JSON.parse(str);</span><br><span class="line">console.log(object);</span><br><span class="line">var string = JSON.stringify(object);</span><br><span class="line">console.log(staring);</span><br></pre></td></tr></table></figure>
+<h3 id="相等问题"><a href="#相等问题" class="headerlink" title="相等问题"></a>相等问题</h3><p>== &amp; ===　&amp; != &amp; !== 进行字符串，整数类型比较<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let a = 2, b = &apos;2&apos;, c = 3;</span><br><span class="line">console.log(a == b); //　true，　值相等就行</span><br><span class="line">console.log(a === b); //　false, 类型也要相同</span><br><span class="line">console.log(a != c); //　true，　只要看值是否相同，</span><br><span class="line">console.log(a !==c ); // true，　值或者类型不相同　都返回true</span><br></pre></td></tr></table></figure></p>
+<p>自定义比较数组是否相等(忽略类型和对象数组)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Array.prototype.equals = function (arr) &#123;</span><br><span class="line">    if (!arr) &#123; return false;&#125;</span><br><span class="line">    if (this.length !== arr.length) &#123; return false;&#125;</span><br><span class="line">    if (this.lenght === 0 &amp;&amp; arr.lenght === 0) &#123; return true;&#125;</span><br><span class="line">    for (var index in  arr) &#123;</span><br><span class="line">        if (this[index] instanceof Array &amp;&amp; arr[index] instanceof Array) &#123;</span><br><span class="line">            return this.[index].equals(arr[index]);</span><br><span class="line">        &#125; else if (this.[index] != arr[index]) &#123;</span><br><span class="line">          return false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="对象比较"><a href="#对象比较" class="headerlink" title="对象比较"></a>对象比较</h3><p>对象的比较个人认为最好是根据业务数据的情况量身定制，这个适用性的比较只能是玩玩</p>
+<pre><code>Object.prototype.equals = function(object2) {
+    for (propName in this) {
+        if (this.hasOwnProperty(propName) != object2.hasOwnProperty(propName)) {
+            return false;
+        }
+        else if (typeof this[propName] != typeof object2[propName]) {
+            return false;
+        }
+    }
+    for(propName in object2) {
+        if (this.hasOwnProperty(propName) != object2.hasOwnProperty(propName)) {
+            return false;
+        }
+        else if (typeof this[propName] != typeof object2[propName]) {
+            return false;
+        }
+
+        if (this[propName] instanceof Array &amp;&amp; object2[propName] instanceof Array) {
+           if (!this[propName].equals(object2[propName]))
+                        return false;
+        }
+        else if (this[propName] instanceof Object &amp;&amp; object2[propName] instanceof Object) {
+           if (!this[propName].equals(object2[propName]))
+                        return false;
+        }
+        else if(this[propName] != object2[propName]) {
+           return false;
+        }
+    }
+    return true;
+}
+</code></pre><h3 id="拷贝-浅，深copy"><a href="#拷贝-浅，深copy" class="headerlink" title="拷贝(浅，深copy)"></a>拷贝(浅，深copy)</h3><p>普通变量赋值　var a = b;已经发生了拷贝.<br>引用类型变量赋值　var a = {name: ‘ivin’, age: ‘24’}, a获取到的是地址.<br>常用的引用类型拷贝有数组拷贝，对象拷贝．</p>
+<p>数组拷贝方法一，利用slice()：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let array = [1,2,3,4];</span><br><span class="line">let newArray = array.slice();</span><br><span class="line">newArray[2] = &apos;apple&apos;;</span><br><span class="line">console.log(&apos;array:&apos;, array);</span><br><span class="line">console.log(&apos;newArray:&apos;, newArray);</span><br><span class="line">结果：</span><br><span class="line">array: (4) [1, 2, 3, 4]</span><br><span class="line">VM72:5 newArray: (4) [1, 2, &quot;apple&quot;, 4]</span><br></pre></td></tr></table></figure></p>
+<p>对象浅拷贝方法一，for in 变量赋值给另外一个对象,但是对引用类型属性无效<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var a = &#123;name: &apos;ivin&apos;, age:[2,3,4,5]&#125;;</span><br><span class="line">var b = &#123;&#125;;</span><br><span class="line">for (index in a) &#123;</span><br><span class="line">  b[index] = a[index];</span><br><span class="line">&#125;</span><br><span class="line">b.age[0] = 1;</span><br><span class="line">console.log(a);</span><br><span class="line">console.log(b);</span><br><span class="line">结果：　如果ａ中的属性也是引用类型，那么赋值给ｂ后，b改变引用型属性，ａ也会改变．这就需要递归来赋值了</span><br></pre></td></tr></table></figure></p>
+<p>对象浅拷贝方法二，　ES6　Object.assign方法用于对象的合并<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var target = &#123; a: 1 &#125;;</span><br><span class="line"></span><br><span class="line">var source1 = &#123; b: 2 &#125;;</span><br><span class="line">var source2 = &#123; c: 3 &#125;;</span><br><span class="line"></span><br><span class="line">Object.assign(target, source1, source2);</span><br><span class="line">target // &#123;a:1, b:2, c:3&#125;</span><br><span class="line">// 进行浅拷贝</span><br><span class="line">var target = &#123;&#125;;</span><br><span class="line">var source = &#123;name: &apos;ivin&apos;, age: [2,3,4,5]&#125;;</span><br><span class="line">Object.assign(target, source);</span><br><span class="line">target.aget[0] = 1;</span><br><span class="line">console.log(target);</span><br><span class="line">console.log(source);</span><br></pre></td></tr></table></figure></p>
+<p>对象深拷贝<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function deepCopy(obj) &#123;</span><br><span class="line">    if (typeof obj != &apos;object&apos;) &#123;</span><br><span class="line">        return obj;</span><br><span class="line">    &#125;</span><br><span class="line">    if (obj instanceof Array) &#123;</span><br><span class="line">        return obj.slice();</span><br><span class="line">    &#125;</span><br><span class="line">    var newobj = &#123;&#125;;</span><br><span class="line">    for ( var attr in obj) &#123;</span><br><span class="line">        newobj[attr] = deepCopy(obj[attr]);</span><br><span class="line">    &#125;</span><br><span class="line">    return newobj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">null, undefined, &quot;&quot;, 0, -0, NaN</span><br><span class="line">//转换成布尔值是false， 剩下的全转化为 ==&gt;&gt; true;</span><br><span class="line">null, &quot;&quot;, false, , []</span><br><span class="line">//转换成数字是 ==&gt;&gt; 0;</span><br><span class="line">undefind, &quot;One&quot;, 一个非数字值的数组：[&quot;a&quot;], function()&#123;&#125;</span><br><span class="line">// 转化成数字是 ==&gt;&gt; NaN;</span><br><span class="line">true, 一个值为数字的数组：[1] , 是数字的字符串：&quot;1&quot;，</span><br><span class="line">//转换为数字是 ==&gt;&gt; 1;</span><br></pre></td></tr></table></figure>
+<p>类型转换有显现跟隐性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Boolean(value) - 把给定的值转换成 Boolean 型；</span><br><span class="line">Number(value) - 把给定的值转换成数字（可以是整数或浮点数）；</span><br><span class="line">String(value) - 把给定的值转换成字符串；</span><br><span class="line">parseInt() - 转为Number 保留整数部分</span><br><span class="line">parseFloat() - 转为　Number</span><br><span class="line">valueOf()</span><br><span class="line">toString()</span><br></pre></td></tr></table></figure></p>
+<p>Math 方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let num = 1314.45;</span><br><span class="line">Math.floor(num); //向下取整</span><br><span class="line">Math.ceil(num); //向上取整</span><br><span class="line">Math.round(num); // 四舍五入</span><br></pre></td></tr></table></figure></p>
+<h3 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h3><p>var expression = / pattern / flags</p>
+<p><code>flag</code></p>
+<ul>
+<li><p>g：表示全局（global）模式，即模式将被应用于所有字符串，而非在发现第一个匹配项时立即停止；</p>
+</li>
+<li><p>i：表示不区分大小写（case-insensitive）模式，即在确定匹配项时忽略模式与字符串的大小写；</p>
+</li>
+<li><p>m：表示多行（multiline）模式，即在到达一行文本末尾时还会继续查找下一行中是否存在与模式匹配的项。</p>
+</li>
+</ul>
+<p>创建RegExp实例两种方式<br>方式一：正则表达式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var pattern1 = /mom( and dad( and baby)?)?/gi</span><br></pre></td></tr></table></figure></p>
+<p>方式二：RegExp 对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var pattern2 = new RegExp(&quot;mom( and dad( and baby)?)?&quot;, &quot;i&quot;);</span><br><span class="line">console.log(pattern2.toString()); // 输出：　/mom( and dad( and baby)?)?/gi;</span><br></pre></td></tr></table></figure></p>
+<p>RegExp属性方法<br>pattern.exec(text); 把字符串进行切割分配，返回满足匹配的组项．<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var text = &quot;mom and dad and baby&quot;;</span><br><span class="line">var pattern = /mom( and dad( and baby)?)?/gi;</span><br><span class="line"></span><br><span class="line">var matches = pattern.exec(text);</span><br><span class="line">alert(matches.index);     // 0</span><br><span class="line">alert(matches.input);     // &quot;mom and dad and baby&quot;</span><br><span class="line">alert(matches[0]);        // &quot;mom and dad and baby&quot;</span><br><span class="line">alert(matches[1]);        // &quot; and dad and baby&quot;</span><br><span class="line">alert(matches[2]);        // &quot; and baby&quot;</span><br></pre></td></tr></table></figure></p>
+<p>pattern.test(text); 检测一个字符串是否匹配某个模式，如果字符串中含有匹配的文本，则返回 true，否则返回 false。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var text = &quot;mom and dad and baby&quot;;</span><br><span class="line">var pattern = /mom( and dad( and baby)?)?/gi;</span><br><span class="line"></span><br><span class="line">var test = pattern.test(text);</span><br><span class="line">console.log(test); // true</span><br></pre></td></tr></table></figure></p>
+<p>字符串方法配合Regexp<br>string.search();//返回匹配patter在text的索引，用于检查字符是否在字符串中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var text = &quot;Visit Runoob!&quot;;</span><br><span class="line">var pattern＝/Runoob/;</span><br><span class="line">var n = text.search(pattern);　//　n = ６</span><br></pre></td></tr></table></figure></p>
+<p>string.replace();<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var text = &quot;Visit Runoob!&quot;;</span><br><span class="line">var pattern＝/Runoob/g;</span><br><span class="line">var n = text.replace(pattern, &apos;world&apos;);　//　Visit word!</span><br></pre></td></tr></table></figure></p>
+<h3 id="日期时间"><a href="#日期时间" class="headerlink" title="日期时间"></a>日期时间</h3><p>时间戳　转为　YYYY-MM-DD hh:mm:ss 格式，　前后端交互时最好传时间戳．<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">function getNowFormatDate(timestamp) &#123;</span><br><span class="line">    var date = timestamp? new Date(timestamp) : new Date();</span><br><span class="line">    var seperator1 = &quot;-&quot;;</span><br><span class="line">    var seperator2 = &quot;:&quot;;</span><br><span class="line">    var year = date.getFullYear();</span><br><span class="line">    var month = date.getMonth() + 1;</span><br><span class="line">    var strDate = date.getDate();</span><br><span class="line">    if (month &gt;= 1 &amp;&amp; month &lt;= 9) &#123;</span><br><span class="line">        month = &quot;0&quot; + month;</span><br><span class="line">    &#125;</span><br><span class="line">    if (strDate &gt;= 0 &amp;&amp; strDate &lt;= 9) &#123;</span><br><span class="line">        strDate = &quot;0&quot; + strDate;</span><br><span class="line">    &#125;</span><br><span class="line">    var currentdate = year + seperator1 + month + seperator1 + strDate</span><br><span class="line">            + &quot; &quot; + date.getHours() + seperator2 + date.getMinutes()</span><br><span class="line">            + seperator2 + date.getSeconds();</span><br><span class="line">    return currentdate;</span><br><span class="line">&#125;</span><br><span class="line">var now = new Date();</span><br><span class="line">var time = now.getTime();</span><br><span class="line">console.log(now);</span><br><span class="line">console.log(getNowFormatDate(time));</span><br><span class="line">结果：</span><br><span class="line">Sun Mar 11 2018 12:42:14 GMT+0800 (CST)</span><br><span class="line">VM11592:22 2018-03-11 12:42:14</span><br></pre></td></tr></table></figure></p>
+<p>字符串转日期时间 YYYY-MM-DD hh:mm:ss<br>原生js,并没有提供转换的API，我们可以借用一个处理时间的库moment.js，<br><a href="http://momentjs.cn/" target="_blank" rel="noopener">http://momentjs.cn/</a>. 可以传入参数，moment(dataString).format(‘’)；<br>例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(moment(&apos;Sun Mar 11 2018 14:09:20 GMT+0800 (CST)&apos;).format(&apos;L&apos;));</span><br><span class="line">// 2018-03-11</span><br></pre></td></tr></table></figure></p>
+<p>API:<br>日期格式化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">moment().format(&apos;MMMM Do YYYY, h:mm:ss a&apos;); // 三月 11日 2018, 1:05:34 下午</span><br><span class="line">moment().format(&apos;dddd&apos;);                    // 星期日</span><br><span class="line">moment().format(&quot;MMM Do YY&quot;);               // 3月 11日 18</span><br><span class="line">moment().format(&apos;YYYY [escaped] YYYY&apos;);     // 2018 escaped 2018</span><br><span class="line">moment().format();                          // 2018-03-11T13:05:34+08:00</span><br><span class="line">相对时间</span><br><span class="line">moment(&quot;20111031&quot;, &quot;YYYYMMDD&quot;).fromNow(); // 6 年前</span><br><span class="line">moment(&quot;20120620&quot;, &quot;YYYYMMDD&quot;).fromNow(); // 6 年前</span><br><span class="line">moment().startOf(&apos;day&apos;).fromNow();        // 13 小时前</span><br><span class="line">moment().endOf(&apos;day&apos;).fromNow();          // 11 小时内</span><br><span class="line">moment().startOf(&apos;hour&apos;).fromNow();       // 6 分钟前</span><br></pre></td></tr></table></figure></p>
+<p>日历时间<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">moment().subtract(10, &apos;days&apos;).calendar(); // 2018年3月1日</span><br><span class="line">moment().subtract(6, &apos;days&apos;).calendar();  // 本周一下午1点05</span><br><span class="line">moment().subtract(3, &apos;days&apos;).calendar();  // 本周四下午1点05</span><br><span class="line">moment().subtract(1, &apos;days&apos;).calendar();  // 昨天下午1点05分</span><br><span class="line">moment().calendar();                      // 今天下午1点05分</span><br><span class="line">moment().add(1, &apos;days&apos;).calendar();       // 明天下午1点05分</span><br><span class="line">moment().add(3, &apos;days&apos;).calendar();       // 下周三下午1点05</span><br><span class="line">moment().add(10, &apos;days&apos;).calendar();      // 2018年3月21日</span><br></pre></td></tr></table></figure></p>
+<p>多语言支持<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">moment().format(&apos;L&apos;);    // 2018-03-11</span><br><span class="line">moment().format(&apos;l&apos;);    // 2018-03-11</span><br><span class="line">moment().format(&apos;LL&apos;);   // 2018年3月11日</span><br><span class="line">moment().format(&apos;ll&apos;);   // 2018年3月11日</span><br><span class="line">moment().format(&apos;LLL&apos;);  // 2018年3月11日下午1点05分</span><br><span class="line">moment().format(&apos;lll&apos;);  // 2018年3月11日下午1点05分</span><br><span class="line">moment().format(&apos;LLLL&apos;); // 2018年3月11日星期日下午1点05分</span><br><span class="line">moment().format(&apos;llll&apos;); // 2018年3月11日星期日下午1点05分</span><br></pre></td></tr></table></figure></p>
+
+            
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/all-tags/javascript/">javascript</a> <a class="tag tag--primary tag--small t-link" href="/all-tags/日期处理/">日期处理</a> <a class="tag tag--primary tag--small t-link" href="/all-tags/正则表达式/">正则表达式</a> <a class="tag tag--primary tag--small t-link" href="/all-tags/遍历/">遍历</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/03/19/nginx/" data-tooltip="nginx" aria-label="PREVIOUS: nginx">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/02/08/ubuntu/" data-tooltip="ubuntu" aria-label="NEXT: ubuntu">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://fuersite.coding.me/2018/02/26/jsUtil/" title="Share on Facebook">
+                    <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://fuersite.coding.me/2018/02/26/jsUtil/" title="Share on Twitter">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://fuersite.coding.me/2018/02/26/jsUtil/" title="Share on Google+">
+                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+                <li class="post-action">
+                    <a class="post-action-btn btn btn--default" href="#gitment">
+                         <i class="fa fa-comment-o"></i>
+                    </a>
+                </li>
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+                <div id="gitment"></div>
+            
+        
+
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2019 虚空生花. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/03/19/nginx/" data-tooltip="nginx" aria-label="PREVIOUS: nginx">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/02/08/ubuntu/" data-tooltip="ubuntu" aria-label="NEXT: ubuntu">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://fuersite.coding.me/2018/02/26/jsUtil/" title="Share on Facebook">
+                    <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://fuersite.coding.me/2018/02/26/jsUtil/" title="Share on Twitter">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://fuersite.coding.me/2018/02/26/jsUtil/" title="Share on Google+">
+                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+                <li class="post-action">
+                    <a class="post-action-btn btn btn--default" href="#gitment">
+                         <i class="fa fa-comment-o"></i>
+                    </a>
+                </li>
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+    <i id="btn-close-shareoptions" class="fa fa-close"></i>
+    <ul class="share-options">
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://fuersite.coding.me/2018/02/26/jsUtil/">
+                    <i class="fa fa-facebook-official" aria-hidden="true"></i><span>Share on Facebook</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://fuersite.coding.me/2018/02/26/jsUtil/">
+                    <i class="fa fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://fuersite.coding.me/2018/02/26/jsUtil/">
+                    <i class="fa fa-google-plus" aria-hidden="true"></i><span>Share on Google+</span>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/favicon.jpg" alt="Ivin Chow"/>
+        
+            <h4 id="about-card-name">虚空生花</h4>
+        
+            <div id="about-card-bio"><p>purchase perfect</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>IT Engineer</p>
+
+            </div>
+        
+        
+    </div>
+</div>
+
+        
+            <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-close"></i></span>
+            <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    />
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">no post found</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/03/git/">
+                            <img class="media-image" src="http://fuersite.coding.me/images/git.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/03/git/">
+                            <h3 class="media-heading">git 安装与使用</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Feb 3, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>Git 安装与使用<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/03/webpack/">
+                            <img class="media-image" src="http://fuersite.coding.me/images/webpack.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/03/webpack/">
+                            <h3 class="media-heading">webpack</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Feb 3, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>webpack 使用与配置<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/03/gulp/">
+                            <h3 class="media-heading">gulp</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Feb 3, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>gulp 使用与配置<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/08/ubuntu/">
+                            <img class="media-image" src="http://fuersite.coding.me/images/ubuntu.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/08/ubuntu/">
+                            <h3 class="media-heading">ubuntu</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Feb 8, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>ubuntu 常用操作<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/26/jsUtil/">
+                            <h3 class="media-heading">js 常用开发操作</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Feb 26, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>DOM选择，数组排序， 遍历，　去重，　字符串处理，　类型转换，　正则表达式，　日期时间处理, 拷贝, 相等问题<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/03/19/nginx/">
+                            <h3 class="media-heading">nginx</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Mar 19, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>ngnix 使用与配置<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/03/30/koa2/">
+                            <h3 class="media-heading">koa2 使用</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Mar 30, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>ko2 从零到亿<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/04/24/jsEventPriority/">
+                            <h3 class="media-heading">jsEventPriority</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Apr 24, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>JS Onblur 与Onclick事件冲突的解决办法<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/04/24/phpLive/">
+                            <img class="media-image" src="http://fuersite.coding.me/images/php.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/04/24/phpLive/">
+                            <h3 class="media-heading">php生命周期</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Apr 24, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>学习框架先从生命周期开始<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/04/24/websocket/">
+                            <h3 class="media-heading">websocket</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Apr 24, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="no post found"
+                data-message-one="1 post found"
+                data-message-other="{n} posts found">
+                24 posts found
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-peofhqjkzcghmndknakluequy1y6owxdwpaqyju9ntl9zxnk7rdolb3rjjoj.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script type="text/javascript">
+            (function() {
+                function render() {
+                    new Gitment({
+                        id: 'http://fuersite.coding.me/2018/02/26/jsUtil/',
+                        owner: 'fuersite',
+                        repo: 'fuersite.github.io',
+                        oauth: {
+                            client_id: '5b6bdce6a71732c60d31',
+                            client_secret: '147633ba026d6cb80d1becb7bee769225a46a94a',
+                        }
+                    }).render('gitment');
+                }
+                var gc = document.createElement('script');
+                gc.type = 'text/javascript';
+                gc.src = '//fuersite.github.io/resource/gitment.js';
+                gc.charset = 'UTF-8';
+                gc.onload = render;
+                gc.async = true;
+                document.querySelector('body').appendChild(gc);
+                var gcs = document.createElement('link');
+                gcs.href = '//imsun.github.io/gitment/style/default.css';
+                gcs.type = 'text/css';
+                gcs.rel = 'stylesheet';
+                gcs.media = 'screen,print';
+                document.querySelector('head').appendChild(gcs);
+            })();
+	    </script>
+    
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.min.js"></script>
+    <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script>
+        var algoliaClient = algoliasearch('OD5GIWUQDZ', '36d3f5cf4fe44de6f33bb94ca9be7d79');
+        var algoliaIndex = algoliaClient.initIndex('fuersite-hexo-blog');
+    </script>
+    <script async src="https://fuersite.github.io/script/busuanzi.pure.mini.js"></script>
+
+
+    </body>
+</html>
