@@ -206,9 +206,9 @@ gitment:
     # The repo to store comments:
     repo: fuersite.github.io
     # Your client ID:
-    client_id: 5b6bdce6a71732c60d31
+    client_id: 97ead7f4ec9f6087bc4d
     # Your client secret:
-    client_secret: 147633ba026d6cb80d1becb7bee769225a46a94a
+    client_secret: 7e7cdd189f1914775287f2ea5fcb1ee8a1bb4413
     lazy: false
 
 # -------------------
@@ -218,7 +218,8 @@ gitment:
 # Your Google analystics web property ID : UA-XXXXX-X
 google_analytics_id:
 # Your Baidu analystics web property ID : 9505a5af654a2478f93fd6c0ae4f687d
-baidu_analytics_id: 231aaeebdac35a97af1cd3bfe845b227
+# 原_id:231aaeebdac35a97af1cd3bfe845b227
+baidu_analytics_id: 1d8a491a2e41a094d5c280424bc1e071
 # Your Gravatar email. Overwrite `author.picture` everywhere in the blog
 gravatar_email:
 # Your Facebook user ids used to connect your blog with your facebook user accounts (Facebook Insights). Separate ids with comma. e.g : 9830047,1003342
