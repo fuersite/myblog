@@ -3413,7 +3413,7 @@ var Gitment = function () {
       }, options);
 
       this.state.user.isLoggingIn = true;
-      _utils.http.post('https://bak.smalbox.club', {
+      _utils.http.post('https://gh-oauth.imsun.net', {
         code: code,
         client_id: client_id,
         client_secret: client_secret
@@ -3422,7 +3422,7 @@ var Gitment = function () {
         _this.update();
       }).catch(function (e) {
         _this.state.user.isLoggingIn = false;
-        alert(e);
+        alert(JSON.stringify(e));
       });
     } else {
       this.update();
