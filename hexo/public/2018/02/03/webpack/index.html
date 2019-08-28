@@ -23,7 +23,7 @@
 <meta property="og:description" content="webpack 使用与配置">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://fuersite.coding.me/images/webpackProject.png">
-<meta property="og:updated_time" content="2018-11-06T16:11:53.449Z">
+<meta property="og:updated_time" content="2019-08-28T01:21:26.075Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack">
 <meta name="twitter:description" content="webpack 使用与配置">
@@ -44,7 +44,7 @@
     <!-- code highlight -->
     <link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/solarized_dark.min.css">
     <script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
-    <script src="https://hm.baidu.com/hm.js?231aaeebdac35a97af1cd3bfe845b227"></script>
+    <!-- <script src="https://hm.baidu.com/hm.js?231aaeebdac35a97af1cd3bfe845b227"></script> -->
     <script defer>hljs.initHighlightingOnLoad();</script>
     <!--STYLES-->
     <link rel="stylesheet" href="/assets/css/style-pz4cc6y13wt2trzqa8l3n9v0yykr0sstdaheem7qj628nhjmhp9pfawvqawz.min.css">
@@ -257,7 +257,7 @@
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
             <p>webpack 使用与配置<br><a id="more"></a></p>
-<p>[转载] <a href="https://www.jianshu.com/p/42e11515c10f" target="_blank" rel="noopener">原文地址</a><br>[github] <a href="https://github.com/fuersite/webpackproject" target="_blank" rel="noopener">项目例子</a></p>
+<p>[转载] [原文地址][1]<br>[github] [项目例子][2]<br>[1]: <a href="https://www.jianshu.com/p/42e11515c10f" target="_blank" rel="noopener">https://www.jianshu.com/p/42e11515c10f</a><br>[2]: <a href="https://github.com/fuersite/webpackproject" target="_blank" rel="noopener">https://github.com/fuersite/webpackproject</a></p>
 <h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>Webpack 是当下最热门的前端资源模块化管理和打包工具。它可以将许多松散的模块按照依赖和规则打包成符合生产环境部署的前端资源。还可以将按需加载的模块进行代码分隔，等到实际需要的时候再异步加载。通过 loader 的转换，<code>任何形式的资源</code>都可以视作<code>模块</code>，比如 CommonJs 模块、 AMD 模块、 ES6 模块、CSS、图片、 JSON、Coffeescript、 LESS 等。</p>
 <h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>webpack 根据入口文件(比如main.js, index.js 等), 把相关联的资源文件全部打包(通过 require, import 等引入的文件), 所以我们需要做的就是:</p>
 <ol>
@@ -265,7 +265,7 @@
 <li>项目所需的资源文件要直接或者间接的跟入口文件关联上.</li>
 <li>设置webpack.config.js配置文件</li>
 </ol>
-<h4 id="webpack配置讲解"><a href="#webpack配置讲解" class="headerlink" title="webpack配置讲解"></a>webpack配置讲解</h4><p><a href="https://www.jianshu.com/p/42e11515c10f" target="_blank" rel="noopener">原文地址</a>已经很详细的举例,这里就只进行配置讲解<br>下面是我自己的一份配置文件:</p>
+<h4 id="webpack配置讲解"><a href="#webpack配置讲解" class="headerlink" title="webpack配置讲解"></a>webpack配置讲解</h4><p>[原文地址][1]已经很详细的举例,这里就只进行配置讲解<br>下面是我自己的一份配置文件:</p>
 <p>项目结构:<br><img src="http://fuersite.coding.me/images/webpackProject.png" alt="webpacke-project"></p>
 <ul>
 <li>build 文件夹 里面存放打包好的js文件和生成的项目访问文件index.html</li>
@@ -928,7 +928,7 @@ module.exports = {
                 }
                 var gc = document.createElement('script');
                 gc.type = 'text/javascript';
-                gc.src = '//fuersite.github.io/resource/gitment.js';
+                gc.src = '//fuersite.github.io/assets/js/gitment.js';
                 gc.charset = 'UTF-8';
                 gc.onload = render;
                 gc.async = true;

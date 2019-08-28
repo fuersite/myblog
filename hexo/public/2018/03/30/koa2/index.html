@@ -22,7 +22,7 @@
 <meta property="og:site_name" content="恬淡如诗，烈火如歌">
 <meta property="og:description" content="ko2 从零到亿">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-11-15T14:10:25.396Z">
+<meta property="og:updated_time" content="2019-08-28T01:21:26.074Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="koa2 使用">
 <meta name="twitter:description" content="ko2 从零到亿">
@@ -39,7 +39,7 @@
     <!-- code highlight -->
     <link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/solarized_dark.min.css">
     <script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
-    <script src="https://hm.baidu.com/hm.js?231aaeebdac35a97af1cd3bfe845b227"></script>
+    <!-- <script src="https://hm.baidu.com/hm.js?231aaeebdac35a97af1cd3bfe845b227"></script> -->
     <script defer>hljs.initHighlightingOnLoad();</script>
     <!--STYLES-->
     <link rel="stylesheet" href="/assets/css/style-pz4cc6y13wt2trzqa8l3n9v0yykr0sstdaheem7qj628nhjmhp9pfawvqawz.min.css">
@@ -310,7 +310,7 @@
 <li><p>浏览器访问：　<a href="http://localhost:3000/user，" target="_blank" rel="noopener">http://localhost:3000/user，</a> 返回　welcome Koa2</p>
 </li>
 </ol>
-<h3 id="上下文-Context"><a href="#上下文-Context" class="headerlink" title="上下文(Context)"></a>上下文(Context)</h3><p>Koa Context 将 node 的 request 和 response 对象封装到单个对象中，为编写 Web 应用程序和 API 提供了许多有用的方法。 这些操作在 HTTP 服务器开发中频繁使用，它们被添加到此级别而不是更高级别的框架，这将强制中间件重新实现此通用功能。<br><em>每个</em> 请求都将创建一个 Context，并在中间件中作为接收器引用，或者 ctx 标识符，如以下代码</p>
+<h3 id="上下文-Context"><a href="#上下文-Context" class="headerlink" title="上下文(Context)"></a>上下文(Context)</h3><p>Koa Context 将 node 的 request 和 response 对象封装到单个对象中，为编写 Web 应用程序和 API 提供了许多有用的方法。 这些操作在 HTTP 服务器开发中频繁使用，它们被添加到此级别而不是更高级别的框架，这将强制中间件重新实现此通用功能。<br>_每个_ 请求都将创建一个 Context，并在中间件中作为接收器引用，或者 ctx 标识符，如以下代码</p>
 <p><pre><code class="javascript"><br>app.use(async (ctx, next) =&gt; {<br>  console.log(‘first11 context’, ‘———————————–’)<br>  await next()<br>  console.log(‘first12 context’, ‘———————————–’)<br>})<br>app.use(ctx =&gt; {<br>  console.log(‘second21 context’, ‘———————————-‘)<br>})<br></code></pre><br>执行结果：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">first11 context -----------------------------------</span><br><span class="line">second21 context ----------------------------------</span><br><span class="line">first12 context -----------------------------------</span><br></pre></td></tr></table></figure>
 <p>其实中间件很像我们所熟悉的拦截器，　执行顺序　Ａ –wait-&gt; B –wait-&gt; C–(done request and response) –callback-&gt; B –callback-&gt; A.<br>经过middleware层层过滤后在处理请求，处理完后，在进行回调。如果前面有中间层进行response了就不会再执行后面的middleware<br>所以你需要吧处理请求(route)的放到最后处理,　路由（route）也是作为一个中间件在应用程序中。看下面代码：</p>
@@ -835,7 +835,7 @@
                 }
                 var gc = document.createElement('script');
                 gc.type = 'text/javascript';
-                gc.src = '//fuersite.github.io/resource/gitment.js';
+                gc.src = '//fuersite.github.io/assets/js/gitment.js';
                 gc.charset = 'UTF-8';
                 gc.onload = render;
                 gc.async = true;

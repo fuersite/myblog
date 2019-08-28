@@ -22,7 +22,7 @@
 <meta property="og:site_name" content="恬淡如诗，烈火如歌">
 <meta property="og:description" content="vue 登录权限，项目架构，代码规范，网络安全">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-11-15T14:11:21.206Z">
+<meta property="og:updated_time" content="2019-08-28T01:21:26.075Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue架构">
 <meta name="twitter:description" content="vue 登录权限，项目架构，代码规范，网络安全">
@@ -42,7 +42,7 @@
     <!-- code highlight -->
     <link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/solarized_dark.min.css">
     <script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
-    <script src="https://hm.baidu.com/hm.js?231aaeebdac35a97af1cd3bfe845b227"></script>
+    <!-- <script src="https://hm.baidu.com/hm.js?231aaeebdac35a97af1cd3bfe845b227"></script> -->
     <script defer>hljs.initHighlightingOnLoad();</script>
     <!--STYLES-->
     <link rel="stylesheet" href="/assets/css/style-pz4cc6y13wt2trzqa8l3n9v0yykr0sstdaheem7qj628nhjmhp9pfawvqawz.min.css">
@@ -318,7 +318,7 @@
 </li>
 </ol>
 <p>使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import Bus from &apos;./bus&apos;</span><br><span class="line">Bus.$emit(&apos;message&apos;, &#123;newMsgCount: data&#125;)</span><br><span class="line"></span><br><span class="line">Bus.$on(&apos;message&apos;, (data)=&gt;&#123;</span><br><span class="line">                </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<ol>
+<ol start="5">
 <li>cookie sessionStorage封装</li>
 </ol>
 <p>Cookie<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">export default class Cookie &#123;</span><br><span class="line">    static EXPIRED_DAYS = 30;</span><br><span class="line">    static getCookie(name) &#123;</span><br><span class="line">        var arr, reg = new RegExp(&quot;(^| )&quot; + name + &quot;=([^;]*)(;|$)&quot;);</span><br><span class="line">        if (arr = document.cookie.match(reg))</span><br><span class="line">          return (unescape(arr[2]));</span><br><span class="line">        else</span><br><span class="line">          return null;</span><br><span class="line">    &#125;</span><br><span class="line">       </span><br><span class="line">    static setCookie (name, value, expiredays = null) &#123;</span><br><span class="line">        var exdate = new Date();</span><br><span class="line">        expiredays = expiredays || Cookie.EXPIRED_DAYS </span><br><span class="line">        exdate.setDate(exdate.getDate() + expiredays)</span><br><span class="line">        document.cookie = name + &quot;=&quot; + escape(value) + &quot;;expires=&quot; + exdate.toGMTString()</span><br><span class="line">    &#125;;</span><br><span class="line">       </span><br><span class="line">    static delCookie (name) &#123;</span><br><span class="line">        var exp = new Date();</span><br><span class="line">        exp.setTime(exp.getTime() - 1);</span><br><span class="line">        var value = Cookie.getCookie(name);</span><br><span class="line">        if (value != null) </span><br><span class="line">            document.cookie = name + &quot;=&quot; + value + &quot;;expires=&quot; + exp.toGMTString()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -850,7 +850,7 @@
                 }
                 var gc = document.createElement('script');
                 gc.type = 'text/javascript';
-                gc.src = '//fuersite.github.io/resource/gitment.js';
+                gc.src = '//fuersite.github.io/assets/js/gitment.js';
                 gc.charset = 'UTF-8';
                 gc.onload = render;
                 gc.async = true;
