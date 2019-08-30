@@ -46,3 +46,21 @@ hexo deploy
 [tranquilpeak user doc](https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/blob/master/docs/user.md)
 [tranquilpeak user doc](https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/blob/master/DOCUMENTATION.md)
 ### more command you can see package.json
+
+
+
+### 评论系统接入 gitment
+
+step1：
+
+```
+npm i -D gitment
+```
+step2:
+
+```
+提取node_modules/gitment/gitment.js 或者gitment.browser.js 在hexo项目中引入
+```
+step3: 插件中默认的评论服务器域名https://gh-oauth.imsun.net， 如果自己搭建了评论系统可以替换掉。
+
+注意：https://gh-oauth.imsun.net 可能会被浏览器认为不安全，导致授权登录失败，需要浏览器运行即可。
