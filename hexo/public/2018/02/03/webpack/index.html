@@ -1,0 +1,957 @@
+
+<!DOCTYPE html>
+<html lang="en,zh-cn,default">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="baidu-site-verification" content="PvLt8NSpTt" />
+    <meta name="generator" content="恬淡如诗，烈火如歌">
+    <title>webpack - 恬淡如诗，烈火如歌</title>
+    <meta name="author" content="虚空生花">
+    
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <meta name="description" content="webpack 使用与配置">
+<meta name="keywords" content="javascript,webpack">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="webpack">
+<meta property="og:url" content="http://fuersite.coding.me/2018/02/03/webpack/index.html">
+<meta property="og:site_name" content="恬淡如诗，烈火如歌">
+<meta property="og:description" content="webpack 使用与配置">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://fuersite.coding.me/images/webpackProject.png">
+<meta property="og:updated_time" content="2019-08-28T05:39:49.908Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="webpack">
+<meta name="twitter:description" content="webpack 使用与配置">
+<meta name="twitter:image" content="http://fuersite.coding.me/images/webpackProject.png">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://fuersite.coding.me/assets/images/favicon.jpg"/>
+    
+    
+        <meta property="og:image" content="http://fuersite.coding.me/images/webpack.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://fuersite.coding.me/images/webpack.png" />
+    
+    
+    
+    <!-- code highlight -->
+    <link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/solarized_dark.min.css">
+    <script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+    <!-- <script src="https://hm.baidu.com/hm.js?231aaeebdac35a97af1cd3bfe845b227"></script> -->
+    <script defer>hljs.initHighlightingOnLoad();</script>
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-pz4cc6y13wt2trzqa8l3n9v0yykr0sstdaheem7qj628nhjmhp9pfawvqawz.min.css">
+    <!--STYLES END-->
+    
+
+    
+    <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?1d8a491a2e41a094d5c280424bc1e071";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+
+    
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+
+
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+<header id="header" data-behavior="5">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">恬淡如诗，烈火如歌</a>
+    </div>
+    
+        
+            <a  class="header-right-icon open-algolia-search"
+                href="#search">
+        
+        
+            <i class="fa fa-lg fa-search"></i>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="5">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/favicon.jpg" alt="Ivin Chow"/>
+                </a>
+                <h4 class="sidebar-profile-name">虚空生花</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>purchase perfect</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/ "
+                            
+                            title="Home"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-categories"
+                            
+                            title="Categories"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-tags"
+                            
+                            title="Tags"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link open-algolia-search"
+                             href="#search"
+                            
+                            title="Search"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-search" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Search</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="#about"
+                            
+                            title="About"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-question" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">About</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://github.com/fuersite/fuersite.github.io" target="_blank" rel="noopener" title="GitHub">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+        <ul class="sidebar-buttons">
+          <li class="sidebar-button">
+            <a class="sidebar-button-link" href="javascript:void(0)" title="访问总人数">
+                <i class="sidebar-button-icon fa fa-lg fa-eye" aria-hidden="true"></i>
+                <span class="sidebar-button-desc"> TotalVisitor <span id="busuanzi_value_site_uv"></span>
+                </span>
+            </a>
+          </li>
+        </ul>
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="5"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            webpack
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time itemprop="datePublished" datetime="2018-02-03T12:45:25+08:00">
+	
+		    Feb 03, 2018
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/all-categories/javascript/">javascript</a>
+
+
+    
+</div>
+
+    
+    <span id="busuanzi_container_page_pv" style="font-size: 1.2rem; color: #9eabb3;">
+        <a href="javascript:void(0);" title="阅读总量"><i class="fa fa-lg fa-eye"></i>  <span id="busuanzi_value_page_pv" style="font-size: 1.5rem"></span></a>
+    </span>
+</div>
+
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>webpack 使用与配置<br><a id="more"></a></p>
+<p>[转载] <a href="https://www.jianshu.com/p/42e11515c10f" target="_blank" rel="noopener">原文地址</a><br>[github] <a href="https://github.com/fuersite/webpackproject" target="_blank" rel="noopener">项目例子</a></p>
+<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>Webpack 是当下最热门的前端资源模块化管理和打包工具。它可以将许多松散的模块按照依赖和规则打包成符合生产环境部署的前端资源。还可以将按需加载的模块进行代码分隔，等到实际需要的时候再异步加载。通过 loader 的转换，<code>任何形式的资源</code>都可以视作<code>模块</code>，比如 CommonJs 模块、 AMD 模块、 ES6 模块、CSS、图片、 JSON、Coffeescript、 LESS 等。</p>
+<h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>webpack 根据入口文件(比如main.js, index.js 等), 把相关联的资源文件全部打包(通过 require, import 等引入的文件), 所以我们需要做的就是:</p>
+<ol>
+<li>指定入口文件.</li>
+<li>项目所需的资源文件要直接或者间接的跟入口文件关联上.</li>
+<li>设置webpack.config.js配置文件</li>
+</ol>
+<h4 id="webpack配置讲解"><a href="#webpack配置讲解" class="headerlink" title="webpack配置讲解"></a>webpack配置讲解</h4><p><a href="https://www.jianshu.com/p/42e11515c10f" target="_blank" rel="noopener">原文地址</a>已经很详细的举例,这里就只进行配置讲解<br>下面是我自己的一份配置文件:</p>
+<p>项目结构:<br><img src="http://fuersite.coding.me/images/webpackProject.png" alt="webpacke-project"></p>
+<ul>
+<li>build 文件夹 里面存放打包好的js文件和生成的项目访问文件index.html</li>
+<li>main.js 项目打包的入口文件</li>
+<li>.babelrc babel配置文件</li>
+<li>package.json 项目依赖配置文件</li>
+<li>webpack.config.js webpack配置文件</li>
+<li>webpack.production.config.js 产品阶段的webpack配置文件与webpack.config.js类似</li>
+<li>其他的是一些资源文件</li>
+</ul>
+<p><font size="4" color="#A52A2A"><code>webpack.config.js</code></font></p>
+<pre><code class="javascript">
+const webpack = require('webpack')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  entry:  __dirname + "/app/main.js",//唯一入口文件
+  output: {
+      path: __dirname + "/build",
+      filename: "bundle[hash].js"
+  },
+  devtool: 'source-map',
+  devServer: {
+    contentBase: "./build",//本地服务器所加载的页面所在的目录
+    historyApiFallback: true,//不跳转
+    inline: true,//实时刷新
+    hot: true //热加载插件
+  },
+  module: {
+        rules: [
+            {
+                test: /(\.jsx|\.js)$/,
+                use: {
+                    loader: "babel-loader"
+                },
+                exclude: /node_modules/
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    {
+                        loader: "style-loader"
+                    }, {
+                        loader: "css-loader",
+                        options: {
+                            modules: true, // 指定启用css modules
+                            localIdentName: '[name]__[local]--[hash:base64:5]' // 指定css的类名格式
+                        }
+                    }
+                ]
+            },
+            {
+              test:/\.scss$/,   //表示当前要打包的文件的后缀正则表达式
+              use: [{
+                loader: "style-loader" // 将 JS 字符串生成为 style 节点
+              }, {
+                loader: "css-loader" // 将 CSS 转化成 CommonJS 模块
+              }, {
+                loader: "sass-loader" // 将 Sass 编译成 CSS
+              }]
+            }
+        ]
+  },
+  plugins: [
+    new webpack.BannerPlugin('版权所有，翻版必究'), //在打包的build.js文件中添加注释内容
+    new HtmlWebpackPlugin({ filename: 'index.html', template: './index.temp.html' }), // 利用模板文件生成访问的入口文件,可以生成多个,配置不同入口
+    new webpack.HotModuleReplacementPlugin(),//热加载插件,
+    new ExtractTextPlugin("style.css"), //分离CSS和JS文件
+    new webpack.optimize.OccurrenceOrderPlugin(),//为组件分配ID
+    new webpack.optimize.UglifyJsPlugin(),//压缩JS代码；
+  ]
+}
+
+</code></pre>
+
+<ul>
+<li>entry : 指定打包入口文件,__dirname 指的是当前目录</li>
+<li>output: 指定打包输出文件的路径和文件名,[hash]会生成一段hash值作为文件名一部分</li>
+<li>devtool: 调试工具, 这里我使用’source-map’,会生成.map文件</li>
+<li>devServer: 开启一个前端项目服务器可以使用localhost:8080访问项目,不然的话需要手动点击index.html访问.开启服务器可以实时刷新修改</li>
+<li>module: 用来设置一下loader(转化器), babel-loader 可以转换jsx 还有es6成使得浏览器支持的javascript. 添加之后可以使用es6, (main.js中使用import来引入其他资源)</li>
+<li>style-loader css-loader 添加之后可以识别import ‘.css’文件</li>
+<li>sass-loader 也要配合前面两个使用, 可以使用import ‘.sccs’文件并且转换为css,也可以识别<code>&lt;style lang=&#39;sass&#39;&gt;&lt;/style&gt;</code>这种写法</li>
+<li>loader是webpack里面一个重要配置,需要什么转化器就npm install xxx-loader,然后配置使用</li>
+<li>plugins 插件是一下打包优化的工具</li>
+</ul>
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><ul>
+<li>index.html 如何导入打包后的Build.js文件, 如果你配置了HtmlWebpackPlugin会看到生成的index.html已经导入build.js了</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new HtmlWebpackPlugin(&#123; filename: &apos;index.html&apos;, template: &apos;./index.temp.html&apos; &#125;),</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果没有配置的话, 那么就需要自己手动build.js进index.html. 那么这里就不要hash了<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">output: &#123;</span><br><span class="line">    path: __dirname + &quot;/build&quot;,</span><br><span class="line">    filename: &quot;bundle.js&quot;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><font size="4" color="#A52A2A"><code>index.tmp.html</code></font></p>
+<pre><code class="html">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Webpack Project&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;div id=&apos;root&apos;&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+</code></pre>
+
+<h4 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h4><p>事先安装好package.json中的依赖并且添加到packaage.json中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install xxx --save-dev //添加到devDependencies</span><br><span class="line">或</span><br><span class="line">$ npm install xxx --save //添加到dependencies</span><br></pre></td></tr></table></figure>
+<p><font size="4" color="#A52A2A"><code>package.json</code></font></p>
+<pre><code class="javascript">
+{
+  "name": "webpackproject",
+  "version": "1.0.0",
+  "description": "webpack configure",
+  "main": "index.js",
+  "scripts": {
+    "server": "webpack-dev-server --open",
+    "start": "webpack",
+    "build": "NODE_ENV=production webpack --config ./webpack.production.config.js --progress"
+
+  },
+  "author": "ivin",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.9",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "html-webpack-plugin": "^2.30.1",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.20.1",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.1"
+  },
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  }
+}
+
+</code></pre>
+
+
+            
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/all-tags/javascript/">javascript</a> <a class="tag tag--primary tag--small t-link" href="/all-tags/webpack/">webpack</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/02/03/gulp/" data-tooltip="gulp" aria-label="PREVIOUS: gulp">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/02/03/git/" data-tooltip="git 安装与使用" aria-label="NEXT: git 安装与使用">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://fuersite.coding.me/2018/02/03/webpack/" title="Share on Facebook">
+                    <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://fuersite.coding.me/2018/02/03/webpack/" title="Share on Twitter">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://fuersite.coding.me/2018/02/03/webpack/" title="Share on Google+">
+                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+                <li class="post-action">
+                    <a class="post-action-btn btn btn--default" href="#gitment">
+                         <i class="fa fa-comment-o"></i>
+                    </a>
+                </li>
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+                <div id="gitment"></div>
+            
+        
+
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2019 虚空生花. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/02/03/gulp/" data-tooltip="gulp" aria-label="PREVIOUS: gulp">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/02/03/git/" data-tooltip="git 安装与使用" aria-label="NEXT: git 安装与使用">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://fuersite.coding.me/2018/02/03/webpack/" title="Share on Facebook">
+                    <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://fuersite.coding.me/2018/02/03/webpack/" title="Share on Twitter">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://fuersite.coding.me/2018/02/03/webpack/" title="Share on Google+">
+                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+                <li class="post-action">
+                    <a class="post-action-btn btn btn--default" href="#gitment">
+                         <i class="fa fa-comment-o"></i>
+                    </a>
+                </li>
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+    <i id="btn-close-shareoptions" class="fa fa-close"></i>
+    <ul class="share-options">
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://fuersite.coding.me/2018/02/03/webpack/">
+                    <i class="fa fa-facebook-official" aria-hidden="true"></i><span>Share on Facebook</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://fuersite.coding.me/2018/02/03/webpack/">
+                    <i class="fa fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://fuersite.coding.me/2018/02/03/webpack/">
+                    <i class="fa fa-google-plus" aria-hidden="true"></i><span>Share on Google+</span>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/favicon.jpg" alt="Ivin Chow"/>
+        
+            <h4 id="about-card-name">虚空生花</h4>
+        
+            <div id="about-card-bio"><p>purchase perfect</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>IT Engineer</p>
+
+            </div>
+        
+        
+    </div>
+</div>
+
+        
+            <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-close"></i></span>
+            <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    />
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">no post found</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/03/git/">
+                            <img class="media-image" src="http://fuersite.coding.me/images/git.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/03/git/">
+                            <h3 class="media-heading">git 安装与使用</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Feb 3, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>Git 安装与使用<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/03/webpack/">
+                            <img class="media-image" src="http://fuersite.coding.me/images/webpack.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/03/webpack/">
+                            <h3 class="media-heading">webpack</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Feb 3, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>webpack 使用与配置<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/03/gulp/">
+                            <h3 class="media-heading">gulp</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Feb 3, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>gulp 使用与配置<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/08/ubuntu/">
+                            <img class="media-image" src="http://fuersite.coding.me/images/ubuntu.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/08/ubuntu/">
+                            <h3 class="media-heading">ubuntu</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Feb 8, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>ubuntu 常用操作<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/26/jsUtil/">
+                            <h3 class="media-heading">js 常用开发操作</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Feb 26, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>DOM选择，数组排序， 遍历，　去重，　字符串处理，　类型转换，　正则表达式，　日期时间处理, 拷贝, 相等问题<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/03/19/nginx/">
+                            <h3 class="media-heading">nginx</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Mar 19, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>ngnix 使用与配置<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/03/30/koa2/">
+                            <h3 class="media-heading">koa2 使用</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Mar 30, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>ko2 从零到亿<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/04/24/jsEventPriority/">
+                            <h3 class="media-heading">jsEventPriority</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Apr 24, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>JS Onblur 与Onclick事件冲突的解决办法<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/04/24/phpLive/">
+                            <img class="media-image" src="http://fuersite.coding.me/images/php.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/04/24/phpLive/">
+                            <h3 class="media-heading">php生命周期</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Apr 24, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>学习框架先从生命周期开始<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/04/24/websocket/">
+                            <h3 class="media-heading">websocket</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Apr 24, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="no post found"
+                data-message-one="1 post found"
+                data-message-other="{n} posts found">
+                26 posts found
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-peofhqjkzcghmndknakluequy1y6owxdwpaqyju9ntl9zxnk7rdolb3rjjoj.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script type="text/javascript">
+            (function() {
+                function render() {
+                    new Gitment({
+                        id: 'http://fuersite.coding.me/2018/02/03/webpack/',
+                        owner: 'fuersite',
+                        repo: 'fuersite.github.io',
+                        oauth: {
+                            client_id: '76a3caa4a47a4a371a19',
+                            client_secret: '7a1f729bbb40aea47d9bad99f6dd4a8ad933f901',
+                        }
+                    }).render('gitment');
+                }
+                var gc = document.createElement('script');
+                gc.type = 'text/javascript';
+                gc.src = '//fuersite.github.io/assets/js/gitment.js';
+                gc.charset = 'UTF-8';
+                gc.onload = render;
+                gc.async = true;
+                document.querySelector('body').appendChild(gc);
+                var gcs = document.createElement('link');
+                gcs.href = '//imsun.github.io/gitment/style/default.css';
+                gcs.type = 'text/css';
+                gcs.rel = 'stylesheet';
+                gcs.media = 'screen,print';
+                document.querySelector('head').appendChild(gcs);
+            })();
+	    </script>
+    
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.min.js"></script>
+    <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script>
+        var algoliaClient = algoliasearch('OD5GIWUQDZ', '36d3f5cf4fe44de6f33bb94ca9be7d79');
+        var algoliaIndex = algoliaClient.initIndex('fuersite-hexo-blog');
+    </script>
+    <script async src="https://fuersite.github.io/script/busuanzi.pure.mini.js"></script>
+
+
+    </body>
+</html>
