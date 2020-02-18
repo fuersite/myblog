@@ -1,0 +1,965 @@
+
+<!DOCTYPE html>
+<html lang="en,zh-cn,default">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="baidu-site-verification" content="PvLt8NSpTt" />
+    <meta name="generator" content="恬淡如诗，烈火如歌">
+    <title>贝塞尔曲线javascript - 恬淡如诗，烈火如歌</title>
+    <meta name="author" content="虚空生花">
+    
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <meta name="description" content="贝塞尔三阶曲线动画">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="贝塞尔曲线javascript">
+<meta property="og:url" content="http://fuersite.coding.me/2019/02/18/bezier/index.html">
+<meta property="og:site_name" content="恬淡如诗，烈火如歌">
+<meta property="og:description" content="贝塞尔三阶曲线动画">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-28T01:21:26.072Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="贝塞尔曲线javascript">
+<meta name="twitter:description" content="贝塞尔三阶曲线动画">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://fuersite.coding.me/assets/images/favicon.jpg"/>
+    
+    
+    
+    
+    <!-- code highlight -->
+    <link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/solarized_dark.min.css">
+    <script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+    <!-- <script src="https://hm.baidu.com/hm.js?231aaeebdac35a97af1cd3bfe845b227"></script> -->
+    <script defer>hljs.initHighlightingOnLoad();</script>
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-pz4cc6y13wt2trzqa8l3n9v0yykr0sstdaheem7qj628nhjmhp9pfawvqawz.min.css">
+    <!--STYLES END-->
+    
+
+    
+    <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?1d8a491a2e41a094d5c280424bc1e071";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+
+    
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+
+
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+<header id="header" data-behavior="5">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">恬淡如诗，烈火如歌</a>
+    </div>
+    
+        
+            <a  class="header-right-icon open-algolia-search"
+                href="#search">
+        
+        
+            <i class="fa fa-lg fa-search"></i>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="5">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/favicon.jpg" alt="Ivin Chow"/>
+                </a>
+                <h4 class="sidebar-profile-name">虚空生花</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>purchase perfect</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/ "
+                            
+                            title="Home"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-categories"
+                            
+                            title="Categories"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-tags"
+                            
+                            title="Tags"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link open-algolia-search"
+                             href="#search"
+                            
+                            title="Search"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-search" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Search</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="#about"
+                            
+                            title="About"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-question" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">About</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://github.com/fuersite/fuersite.github.io" target="_blank" rel="noopener" title="GitHub">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+        <ul class="sidebar-buttons">
+          <li class="sidebar-button">
+            <a class="sidebar-button-link" href="javascript:void(0)" title="访问总人数">
+                <i class="sidebar-button-icon fa fa-lg fa-eye" aria-hidden="true"></i>
+                <span class="sidebar-button-desc"> TotalVisitor <span id="busuanzi_value_site_uv"></span>
+                </span>
+            </a>
+          </li>
+        </ul>
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="5"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            贝塞尔曲线javascript
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time itemprop="datePublished" datetime="2019-02-18T22:19:49+08:00">
+	
+		    Feb 18, 2019
+    	
+    </time>
+    
+</div>
+
+    
+    <span id="busuanzi_container_page_pv" style="font-size: 1.2rem; color: #9eabb3;">
+        <a href="javascript:void(0);" title="阅读总量"><i class="fa fa-lg fa-eye"></i>  <span id="busuanzi_value_page_pv" style="font-size: 1.5rem"></span></a>
+    </span>
+</div>
+
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>贝塞尔三阶曲线动画<br><a id="more"></a></p>
+<h4 id="源码鉴赏"><a href="#源码鉴赏" class="headerlink" title="源码鉴赏"></a>源码鉴赏</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>besier 贝塞尔曲线应用<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">        .level-1 &#123;</span><br><span class="line">            height: 200px;</span><br><span class="line">            width: 100%;</span><br><span class="line">            background: rgb(125, 203, 223);</span><br><span class="line">            color: #fff;</span><br><span class="line">            position: relative;</span><br><span class="line">        &#125;</span><br><span class="line">        .level-2 &#123;</span><br><span class="line">            margin-top: 30px;</span><br><span class="line">            height: 200px;</span><br><span class="line">            width: 100%;</span><br><span class="line">            background: rgb(214, 100, 47);</span><br><span class="line">            color: #fff;</span><br><span class="line">            position: relative;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .level-3 &#123;</span><br><span class="line">            margin-top: 30px;</span><br><span class="line">            height: 200px;</span><br><span class="line">            width: 100%;</span><br><span class="line">            background: rgb(12, 207, 110);</span><br><span class="line">            color: #fff;</span><br><span class="line">            position: relative;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .level-3-ball &#123;</span><br><span class="line">            position:absolute;</span><br><span class="line">            width:16px;</span><br><span class="line">            height:16px;</span><br><span class="line">            overflow:hidden;</span><br><span class="line">            border-radius: 50%;</span><br><span class="line">            background-color:#FF0000;</span><br><span class="line">            display: none;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"level-1"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span>&gt;</span>一阶贝塞尔曲线<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"level1-ball"</span> <span class="attr">class</span>=<span class="string">"level-3-ball"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"level-2"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span>&gt;</span>二阶贝塞尔曲线<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"level2-ball"</span> <span class="attr">class</span>=<span class="string">"level-3-ball"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"level-3"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span>&gt;</span>三阶贝塞尔曲线<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"level3-ball"</span> <span class="attr">class</span>=<span class="string">"level-3-ball"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">         </span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line">        var path1 = [];</span><br><span class="line">        var ball1 = document.getElementById("level1-ball");</span><br><span class="line"></span><br><span class="line">        var path2 = [];</span><br><span class="line">        var ball2 = document.getElementById("level2-ball");</span><br><span class="line"></span><br><span class="line">        var path3 = [];</span><br><span class="line">        var ball3 = document.getElementById("level3-ball");</span><br><span class="line">    </span><br><span class="line">        function Point2D(x,y) &#123;</span><br><span class="line">            this.x=x||0.0;</span><br><span class="line">            this.y=y||0.0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        /**</span><br><span class="line">            一阶曲线</span><br><span class="line">            P0為起始點</span><br><span class="line">            p1為第一個终点</span><br><span class="line">            t為參數值，0 &lt;= t &lt;= 1</span><br><span class="line">        */</span><br><span class="line">        function bezierLevel1( points, t ) &#123;</span><br><span class="line">            var	result = new Point2D</span><br><span class="line">            var p0 = points[0]</span><br><span class="line">            var p1 = points[1]</span><br><span class="line"></span><br><span class="line">            result.x = (1 - t) * p0.x + t * p1.x</span><br><span class="line">            result.y = (1 - t) * p0.y + t * p1.y</span><br><span class="line"></span><br><span class="line">            return result</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        /**</span><br><span class="line">            二阶曲线</span><br><span class="line">            P0為起始點</span><br><span class="line">            p1為第一個控制點</span><br><span class="line">            p2為第二個终点</span><br><span class="line">            t為參數值，0 &lt;= t &lt;= 1</span><br><span class="line">        */</span><br><span class="line">        function bezierLevel2( points, t ) &#123;</span><br><span class="line">            var	result = new Point2D</span><br><span class="line">            var p0 = points[0]</span><br><span class="line">            var p1 = points[1]</span><br><span class="line">            var p2 = points[2]</span><br><span class="line"></span><br><span class="line">            result.x = Math.pow((1 - t),2) * p0.x + 2 * t * (1 - t) * p1.x + t * t * p2.x</span><br><span class="line">            result.y = Math.pow((1 - t),2) * p0.y + 2 * t * (1 - t) * p1.y + t * t * p2.y</span><br><span class="line"></span><br><span class="line">            return result</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        /**</span><br><span class="line">            三阶曲线</span><br><span class="line">            P0為起始點</span><br><span class="line">            p1為第一個控制點</span><br><span class="line">            p2為第二個控制點</span><br><span class="line">            p3為結束點</span><br><span class="line">            t為參數值，0 &lt;= t &lt;= 1</span><br><span class="line">        */</span><br><span class="line">        function bezierLevel3( points, t ) &#123;</span><br><span class="line">            var	result = new Point2D</span><br><span class="line">            var p0 = points[0]</span><br><span class="line">            var p1 = points[1]</span><br><span class="line">            var p2 = points[2]</span><br><span class="line">            var p3 = points[3]</span><br><span class="line"></span><br><span class="line">            result.x = p0.x * Math.pow((1 - t),3) + 3 * p1.x * t * (Math.pow((1 - t),2)) +  3 * p2.x * t * t * (1 - t) + p3.x * Math.pow(t, 3)</span><br><span class="line">            result.y = p0.y * Math.pow((1 - t),3) + 3 * p1.y * t * (Math.pow((1 - t),2)) +  3 * p2.y * t * t * (1 - t) + p3.y * Math.pow(t, 3)</span><br><span class="line">        </span><br><span class="line">            return result;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        function computeBezier(pointNum, path, points, bezierLevel) &#123;</span><br><span class="line">            var dt= 1.0 / ( pointNum - 1 )</span><br><span class="line">            for( var i = 0; i &lt; pointNum; i++) &#123;</span><br><span class="line">                path[i] = bezierLevel( points, i * dt )</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        function setTimer(ball, path3) &#123;</span><br><span class="line">            var i = 0 </span><br><span class="line">            ball.style.left = path3[0].x + 'px'</span><br><span class="line">            ball.style.top = path3[0].y + 'px'</span><br><span class="line">            ball.style.display = 'block'</span><br><span class="line"></span><br><span class="line">            setInterval(function () &#123;</span><br><span class="line">                var j = (i&lt;100) ? i : (199-i)</span><br><span class="line">                ball.style.left = path3[j].x +'px'</span><br><span class="line">                ball.style.top = path3[j].y +'px'</span><br><span class="line">                if(++i==200)i=0</span><br><span class="line">            &#125;, 30);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 一阶</span><br><span class="line">        var points1 = [new Point2D(20, 0), new Point2D(600, 184)]</span><br><span class="line">        computeBezier(100, path1, points1, bezierLevel1)</span><br><span class="line">        setTimer(ball1, path1)</span><br><span class="line"></span><br><span class="line">        // 二阶</span><br><span class="line">        var points2 = [new Point2D(20, 160), new Point2D(100, -100), new Point2D(600, 160)]</span><br><span class="line">        computeBezier(100, path2, points2, bezierLevel2)</span><br><span class="line">        setTimer(ball2, path2)</span><br><span class="line"></span><br><span class="line">        // 三阶</span><br><span class="line">        var points3 = [new Point2D(20, 100), new Point2D(300, -100), new Point2D(600, 300), new Point2D(600, 100)]</span><br><span class="line">        computeBezier(100, path3, points3, bezierLevel3)</span><br><span class="line">        setTimer(ball3, path3)</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="动画演示"><a href="#动画演示" class="headerlink" title="动画演示"></a>动画演示</h4><pre>
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>besier 贝塞尔曲线应用</title>
+    <style>
+        .level-1 {
+            height: 200px;
+            width: 100%;
+            background: rgb(125, 203, 223);
+            color: #fff;
+            position: relative;
+        }
+        .level-2 {
+            margin-top: 30px;
+            height: 200px;
+            width: 100%;
+            background: rgb(214, 100, 47);
+            color: #fff;
+            position: relative;
+        }
+
+        .level-3 {
+            margin-top: 30px;
+            height: 200px;
+            width: 100%;
+            background: rgb(12, 207, 110);
+            color: #fff;
+            position: relative;
+        }
+
+        .level-3-ball {
+            position:absolute;
+            width:16px;
+            height:16px;
+            overflow:hidden;
+            border-radius: 50%;
+            background-color:#FF0000;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="level-1">
+        <span>一阶贝塞尔曲线</span>
+        <div id="level1-ball" class="level-3-ball"></div>
+    </div>
+    <div class="level-2">
+        <span>二阶贝塞尔曲线</span>
+        <div id="level2-ball" class="level-3-ball"></div>
+    </div>
+    <div class="level-3">
+        <span>三阶贝塞尔曲线</span>
+        <div id="level3-ball" class="level-3-ball"></div>
+    </div>
+
+    <script type="text/javascript">
+        var path1 = [];
+        var ball1 = document.getElementById("level1-ball");
+
+        var path2 = [];
+        var ball2 = document.getElementById("level2-ball");
+
+        var path3 = [];
+        var ball3 = document.getElementById("level3-ball");
+
+        function Point2D(x,y) {
+            this.x=x||0.0;
+            this.y=y||0.0;
+        }
+
+        /**
+            一阶曲线
+            P0為起始點
+            p1為第一個终点
+            t為參數值，0 <= t <= 1
+        */
+        function bezierLevel1( points, t ) {
+            var    result = new Point2D
+            var p0 = points[0]
+            var p1 = points[1]
+
+            result.x = (1 - t) * p0.x + t * p1.x
+            result.y = (1 - t) * p0.y + t * p1.y
+
+            return result
+        }
+
+        /**
+            二阶曲线
+            P0為起始點
+            p1為第一個控制點
+            p2為第二個终点
+            t為參數值，0 <= t <= 1
+        */
+        function bezierLevel2( points, t ) {
+            var    result = new Point2D
+            var p0 = points[0]
+            var p1 = points[1]
+            var p2 = points[2]
+
+            result.x = Math.pow((1 - t),2) * p0.x + 2 * t * (1 - t) * p1.x + t * t * p2.x
+            result.y = Math.pow((1 - t),2) * p0.y + 2 * t * (1 - t) * p1.y + t * t * p2.y
+
+            return result
+        }
+
+        /**
+            三阶曲线
+            P0為起始點
+            p1為第一個控制點
+            p2為第二個控制點
+            p3為結束點
+            t為參數值，0 <= t <= 1
+        */
+        function bezierLevel3( points, t ) {
+            var    result = new Point2D
+            var p0 = points[0]
+            var p1 = points[1]
+            var p2 = points[2]
+            var p3 = points[3]
+
+            result.x = p0.x * Math.pow((1 - t),3) + 3 * p1.x * t * (Math.pow((1 - t),2)) +  3 * p2.x * t * t * (1 - t) + p3.x * Math.pow(t, 3)
+            result.y = p0.y * Math.pow((1 - t),3) + 3 * p1.y * t * (Math.pow((1 - t),2)) +  3 * p2.y * t * t * (1 - t) + p3.y * Math.pow(t, 3)
+
+            return result;
+        }
+
+        function computeBezier(pointNum, path, points, bezierLevel) {
+            var dt= 1.0 / ( pointNum - 1 )
+            for( var i = 0; i < pointNum; i++) {
+                path[i] = bezierLevel( points, i * dt )
+            }
+        }
+
+        function setTimer(ball, path3) {
+            var i = 0 
+            ball.style.left = path3[0].x + 'px'
+            ball.style.top = path3[0].y + 'px'
+            ball.style.display = 'block'
+
+            setInterval(function () {
+                var j = (i<100) ? i : (199-i)
+                ball.style.left = path3[j].x +'px'
+                ball.style.top = path3[j].y +'px'
+                if(++i==200)i=0
+            }, 30);
+        }
+
+        // 一阶
+        var points1 = [new Point2D(20, 0), new Point2D(600, 184)]
+        computeBezier(100, path1, points1, bezierLevel1)
+        setTimer(ball1, path1)
+
+        // 二阶
+        var points2 = [new Point2D(20, 160), new Point2D(100, -100), new Point2D(600, 160)]
+        computeBezier(100, path2, points2, bezierLevel2)
+        setTimer(ball2, path2)
+
+        // 三阶
+        var points3 = [new Point2D(20, 100), new Point2D(300, -100), new Point2D(600, 300), new Point2D(600, 100)]
+        computeBezier(100, path3, points3, bezierLevel3)
+        setTimer(ball3, path3)
+    </script>
+</body>
+</html>
+</pre>
+            
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/all-tags/javascript/">javascript</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2019/05/21/移动端自适应/" data-tooltip="移动端自适应解决方案" aria-label="PREVIOUS: 移动端自适应解决方案">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2019/02/18/docker/" data-tooltip="docker入门实践" aria-label="NEXT: docker入门实践">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://fuersite.coding.me/2019/02/18/bezier/" title="Share on Facebook">
+                    <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://fuersite.coding.me/2019/02/18/bezier/" title="Share on Twitter">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://fuersite.coding.me/2019/02/18/bezier/" title="Share on Google+">
+                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+                <li class="post-action">
+                    <a class="post-action-btn btn btn--default" href="#gitment">
+                         <i class="fa fa-comment-o"></i>
+                    </a>
+                </li>
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+                <div id="gitment"></div>
+            
+        
+
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2020 虚空生花. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2019/05/21/移动端自适应/" data-tooltip="移动端自适应解决方案" aria-label="PREVIOUS: 移动端自适应解决方案">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2019/02/18/docker/" data-tooltip="docker入门实践" aria-label="NEXT: docker入门实践">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://fuersite.coding.me/2019/02/18/bezier/" title="Share on Facebook">
+                    <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://fuersite.coding.me/2019/02/18/bezier/" title="Share on Twitter">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://fuersite.coding.me/2019/02/18/bezier/" title="Share on Google+">
+                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+                <li class="post-action">
+                    <a class="post-action-btn btn btn--default" href="#gitment">
+                         <i class="fa fa-comment-o"></i>
+                    </a>
+                </li>
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+    <i id="btn-close-shareoptions" class="fa fa-close"></i>
+    <ul class="share-options">
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://fuersite.coding.me/2019/02/18/bezier/">
+                    <i class="fa fa-facebook-official" aria-hidden="true"></i><span>Share on Facebook</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://fuersite.coding.me/2019/02/18/bezier/">
+                    <i class="fa fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://fuersite.coding.me/2019/02/18/bezier/">
+                    <i class="fa fa-google-plus" aria-hidden="true"></i><span>Share on Google+</span>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/favicon.jpg" alt="Ivin Chow"/>
+        
+            <h4 id="about-card-name">虚空生花</h4>
+        
+            <div id="about-card-bio"><p>purchase perfect</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>IT Engineer</p>
+
+            </div>
+        
+        
+    </div>
+</div>
+
+        
+            <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-close"></i></span>
+            <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    />
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">no post found</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/03/git/">
+                            <img class="media-image" src="http://fuersite.coding.me/images/git.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/03/git/">
+                            <h3 class="media-heading">git 安装与使用</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Feb 3, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>Git 安装与使用<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/03/webpack/">
+                            <img class="media-image" src="http://fuersite.coding.me/images/webpack.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/03/webpack/">
+                            <h3 class="media-heading">webpack</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Feb 3, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>webpack 使用与配置<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/03/gulp/">
+                            <h3 class="media-heading">gulp</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Feb 3, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>gulp 使用与配置<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/08/ubuntu/">
+                            <img class="media-image" src="http://fuersite.coding.me/images/ubuntu.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/08/ubuntu/">
+                            <h3 class="media-heading">ubuntu</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Feb 8, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>ubuntu 常用操作<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/26/jsUtil/">
+                            <h3 class="media-heading">js 常用开发操作</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Feb 26, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>DOM选择，数组排序， 遍历，　去重，　字符串处理，　类型转换，　正则表达式，　日期时间处理, 拷贝, 相等问题<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/03/19/nginx/">
+                            <h3 class="media-heading">nginx</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Mar 19, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>ngnix 使用与配置<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/03/30/koa2/">
+                            <h3 class="media-heading">koa2 使用</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Mar 30, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>ko2 从零到亿<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/04/24/jsEventPriority/">
+                            <h3 class="media-heading">jsEventPriority</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Apr 24, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>JS Onblur 与Onclick事件冲突的解决办法<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/04/24/phpLive/">
+                            <img class="media-image" src="http://fuersite.coding.me/images/php.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/04/24/phpLive/">
+                            <h3 class="media-heading">php生命周期</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Apr 24, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>学习框架先从生命周期开始<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/04/24/websocket/">
+                            <h3 class="media-heading">websocket</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Apr 24, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="no post found"
+                data-message-one="1 post found"
+                data-message-other="{n} posts found">
+                27 posts found
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-peofhqjkzcghmndknakluequy1y6owxdwpaqyju9ntl9zxnk7rdolb3rjjoj.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script type="text/javascript">
+            (function() {
+                function render() {
+                    new Gitment({
+                        id: 'http://fuersite.coding.me/2019/02/18/bezier/',
+                        owner: 'fuersite',
+                        repo: 'fuersite.github.io',
+                        oauth: {
+                            client_id: '76a3caa4a47a4a371a19',
+                            client_secret: '7a1f729bbb40aea47d9bad99f6dd4a8ad933f901',
+                        }
+                    }).render('gitment');
+                }
+                var gc = document.createElement('script');
+                gc.type = 'text/javascript';
+                gc.src = '//fuersite.github.io/assets/js/gitment.js';
+                gc.charset = 'UTF-8';
+                gc.onload = render;
+                gc.async = true;
+                document.querySelector('body').appendChild(gc);
+                var gcs = document.createElement('link');
+                gcs.href = '//imsun.github.io/gitment/style/default.css';
+                gcs.type = 'text/css';
+                gcs.rel = 'stylesheet';
+                gcs.media = 'screen,print';
+                document.querySelector('head').appendChild(gcs);
+            })();
+	    </script>
+    
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.min.js"></script>
+    <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script>
+        var algoliaClient = algoliasearch('OD5GIWUQDZ', '36d3f5cf4fe44de6f33bb94ca9be7d79');
+        var algoliaIndex = algoliaClient.initIndex('fuersite-hexo-blog');
+    </script>
+    <script async src="https://fuersite.github.io/script/busuanzi.pure.mini.js"></script>
+
+
+    </body>
+</html>

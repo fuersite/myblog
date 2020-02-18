@@ -1,0 +1,907 @@
+
+<!DOCTYPE html>
+<html lang="en,zh-cn,default">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="baidu-site-verification" content="PvLt8NSpTt" />
+    <meta name="generator" content="恬淡如诗，烈火如歌">
+    <title>ubuntu - 恬淡如诗，烈火如歌</title>
+    <meta name="author" content="虚空生花">
+    
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <meta name="description" content="ubuntu 常用操作">
+<meta name="keywords" content="ubuntu">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="ubuntu">
+<meta property="og:url" content="http://fuersite.coding.me/2018/02/08/ubuntu/index.html">
+<meta property="og:site_name" content="恬淡如诗，烈火如歌">
+<meta property="og:description" content="ubuntu 常用操作">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-28T01:21:26.075Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ubuntu">
+<meta name="twitter:description" content="ubuntu 常用操作">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://fuersite.coding.me/assets/images/favicon.jpg"/>
+    
+    
+        <meta property="og:image" content="http://fuersite.coding.me/images/ubuntu.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://fuersite.coding.me/images/ubuntu.png" />
+    
+    
+    
+    <!-- code highlight -->
+    <link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/solarized_dark.min.css">
+    <script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+    <!-- <script src="https://hm.baidu.com/hm.js?231aaeebdac35a97af1cd3bfe845b227"></script> -->
+    <script defer>hljs.initHighlightingOnLoad();</script>
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-pz4cc6y13wt2trzqa8l3n9v0yykr0sstdaheem7qj628nhjmhp9pfawvqawz.min.css">
+    <!--STYLES END-->
+    
+
+    
+    <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?1d8a491a2e41a094d5c280424bc1e071";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+
+    
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+
+
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+<header id="header" data-behavior="5">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">恬淡如诗，烈火如歌</a>
+    </div>
+    
+        
+            <a  class="header-right-icon open-algolia-search"
+                href="#search">
+        
+        
+            <i class="fa fa-lg fa-search"></i>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="5">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/favicon.jpg" alt="Ivin Chow"/>
+                </a>
+                <h4 class="sidebar-profile-name">虚空生花</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>purchase perfect</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/ "
+                            
+                            title="Home"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-categories"
+                            
+                            title="Categories"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-tags"
+                            
+                            title="Tags"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link open-algolia-search"
+                             href="#search"
+                            
+                            title="Search"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-search" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Search</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="#about"
+                            
+                            title="About"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-question" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">About</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://github.com/fuersite/fuersite.github.io" target="_blank" rel="noopener" title="GitHub">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+        <ul class="sidebar-buttons">
+          <li class="sidebar-button">
+            <a class="sidebar-button-link" href="javascript:void(0)" title="访问总人数">
+                <i class="sidebar-button-icon fa fa-lg fa-eye" aria-hidden="true"></i>
+                <span class="sidebar-button-desc"> TotalVisitor <span id="busuanzi_value_site_uv"></span>
+                </span>
+            </a>
+          </li>
+        </ul>
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="5"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            ubuntu
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time itemprop="datePublished" datetime="2018-02-08T13:32:49+08:00">
+	
+		    Feb 08, 2018
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/all-categories/os/">os</a>
+
+
+    
+</div>
+
+    
+    <span id="busuanzi_container_page_pv" style="font-size: 1.2rem; color: #9eabb3;">
+        <a href="javascript:void(0);" title="阅读总量"><i class="fa fa-lg fa-eye"></i>  <span id="busuanzi_value_page_pv" style="font-size: 1.5rem"></span></a>
+    </span>
+</div>
+
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>ubuntu 常用操作<br><a id="more"></a></p>
+<ul>
+<li><p>进入到系统根目录</p>
+<blockquote>
+<p>$ cd ／</p>
+</blockquote>
+</li>
+<li><p>进入到当前用户根目录</p>
+<blockquote>
+<p>$ cd ~</p>
+</blockquote>
+</li>
+<li><p>返回上一次所在目录</p>
+<blockquote>
+<p>$ cd -</p>
+</blockquote>
+</li>
+<li><p>用户管理</p>
+<blockquote>
+<p>useradd -d /home/ivin -m ivin //创建新用户，并生成用户目录<br>passwd ivin //设置用户登录密码</p>
+</blockquote>
+</li>
+<li><p>创建全局环境变量</p>
+</li>
+</ul>
+<ol>
+<li><p>方法一：修改用户目录下的 .bashrc 文件， <code>$PATH</code> 表示原有全局变量<br>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bashrc  //打开</span><br><span class="line">export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH　//　设置</span><br><span class="line">source ~/.bashrc　//　立即生效</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方法二：修改系统的 etc 目录下，有一个 profile 文件<br>例如：　</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br><span class="line">export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH　//　设置</span><br><span class="line">source　/etc/profile　//　立即生效</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方法三：　修改系统目录下的 environment 文件<br>例如：　</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/environment</span><br><span class="line">找到以下的 PATH 变量：</span><br><span class="line">PATH=&quot;&lt;......&gt;&quot;</span><br><span class="line">修改该 PATH 变量，在其中加入自己的path即可，例如：</span><br><span class="line">PATH=&quot;~/mypath/bin:&lt;......&gt;&quot;</span><br><span class="line">source /etc/environment　//　立即生效</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方法四：　直接在shell下用export命令修改，设置临时全局变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=/opt/android-studio/bin:$PATH</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li><p>文件管理</p>
+<blockquote>
+<p>ls -a //查看全部文件（包含隐性文件）<br>ls -l //　查看文件详细信息<br>mkdir folderName //创建一个目录<br>rmdir emptyFolderName //删除一个空目录<br>rm file1 file2 //删除一个文件或多个文件<br>rm -rf folderName //删除一个非空目录下的一切<br>sudo find ./ -name ‘Music’　//　查找目录，　文件<br>mv path/name  /path //移动文件<br>mv filename newFileName //当前目录下更名</p>
+</blockquote>
+</li>
+<li><p>文件权限设置</p>
+<blockquote>
+<p>形式一： sudo chmod [-cfvR] [ugoa][-+=][rwx] file //-Ｒ表示递归遍历子目录<br>u 代表所有者（user）<br>g 代表所有者所在的组群（group）<br>o 代表其他人，但不是u和g （other）<br>a 代表全部的人，也就是包括u，g和o<br>sudo chmod u +r file //所有者可读<br>形式二：　sudo chmod　[-cfvR] rwxrwxrwx (三组rwx　分别对应所以者，组用户，其他人的读写权限)<br>sudo chmod 600 ××× （只有所有者有读和写的权限）<br>sudo chmod 644 ××× （所有者有读和写的权限，组用户只有读的权限）<br>sudo chmod 700 ××× （只有所有者有读和写以及执行的权限）<br>sudo chmod 666 ××× （每个人都有读和写的权限）<br>sudo chmod 777 ××× （每个人都有读和写以及执行的权限）</p>
+</blockquote>
+</li>
+<li><p>shell 脚本编写</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//新建文件 test.sh, 内容如下：</span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"hello world"</span></span><br><span class="line">// 执行脚本</span><br><span class="line">$ chmod +x ./test.sh  //赋予执行权限</span><br><span class="line">$ ./test.sh  //执行</span><br><span class="line">或者直接用解释器执行</span><br><span class="line">/bin/bash test.sh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>软连接</p>
+<blockquote>
+<p>ln -s 源地址  目的地址</p>
+</blockquote>
+</li>
+<li><p>进程</p>
+<blockquote>
+<p>ps -ef | grep grunt //查看grunt 进程信息<br>lsof -i:4000 //查看4000端口被哪个进程占据<br>kill -9 PID //杀死进程<br>fs.inotify.max_user_watches默认值太小，导致too many open files，特别是一下watch操作<br>sudo sysctl fs.inotify.max_user_watches=524288 //更改值</p>
+</blockquote>
+</li>
+<li><p>软件安装</p>
+<blockquote>
+<p>solfware——————————–<br>安装软件应用 ： sudo apt-get install application<br>  安装deb包： sudo dpkg -i iptux.deb#安装iptux.deb软件包（其中-i等价于–install）<br>   系统升级： sudo apt-get dist-update<br>更新包管理器列表：  sudo apt-get update<br>   更新软件： sudo apt-get upgrade<br>   删除软件： sudo apt-get remove<br>sudo apt-get –purge remove <programname>purge表示彻底删除<br>清理旧版本的软件缓存：sudo apt-get autoclean<br>清理所有软件缓存：sudo apt-get clean<br>Ubuntu apt-get下载的安装包路径： /var/cache/apt/archives<br>已安装的软件包的安装包也删除掉： apt-get clean<br>/usr ： /usr/local 这个目录包含管理员自己安装的程序；</programname></p>
+<pre><code>/usr/share 包含文件的帮助文件；
+/usr/bin 和/usr/sbin 包含了所有的命令。
+</code></pre><p>/var ： 存放一些服务的安装目录和核心文件，如php apache rpm redis ,日志文件，邮件</p>
+</blockquote>
+</li>
+<li><p>Netstat检查各端口的网络连接 (netstat –help 查看命名)</p>
+<blockquote>
+<p>-a或–all 显示所有连线中的Socket。</p>
+</blockquote>
+</li>
+<li><p>常用查看应用进程, 端口命令</p>
+<blockquote>
+<p>sudo netstat -ap | grep 8080  //查看端口被占用<br>netstat -anop  | grep php5-fpm //可查看应用程序状态<br>或者<br>lsof -i:8888     //查看端口被占用<br>查看当前应用进程:(显示pid)<br>sudo ps -ef | grep nginx<br>杀死进程:<br>sudo pkill -9 nginx //杀死全部相关进程<br>sudo kill -9 PID // 杀死指定端口号</p>
+</blockquote>
+</li>
+<li><p>服务启动,暂停</p>
+<blockquote>
+<p>sudo service nginx start|restart|reload|stop</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>关机重启</p>
+<blockquote>
+<p> sudo shutdown -r now //立刻重启<br> sudo shutdown -r 20:00 //20:00重启<br> sudo shutdown -h now // 立刻关机<br> sudo shutdown -h 10  // 10分钟后关机<br> sudo shutdown -c 　　// 取消关机</p>
+</blockquote>
+</li>
+<li><p>网卡</p>
+<blockquote>
+<p> ifconfig  // 查看网卡, IP<br> ifdown eth0 //关闭网卡<br> ifup eth0 //开启网卡<br> sudo /etc/init.d/networking restart //重启网卡</p>
+</blockquote>
+</li>
+<li><p>压缩／解压</p>
+<blockquote>
+<p>  解压/压缩<br>  .tar ———————————————<br>  解包：tar xvf FileName.tar<br>  打包：tar cvf FileName.tar DirName<br>  .gz ———————————————<br>  解压1：gunzip FileName.gz<br>  解压2：gzip -d FileName.gz<br>  压缩：gzip FileName<br>  .tar.gz 和 .tgz———————————————<br>  解压：tar zxvf FileName.tar.gz<br>  压缩：tar zcvf FileName.tar.gz DirName<br>  .bz2 ————————————————<br>  解压1：bzip2 -d FileName.bz2<br>  解压2：bunzip2 FileName.bz2<br>  压缩： bzip2 -z FileName<br>  .tar.bz2———————————————<br>  解压：tar jxvf FileName.tar.bz2<br>  压缩：tar jcvf FileName.tar.bz2 DirName<br>  .bz———————————————<br>  解压1：bzip2 -d FileName.bz<br>  解压2：bunzip2 FileName.bz<br>  压缩：未知<br>  .tar.bz———————————————<br>  解压：tar jxvf FileName.tar.bz<br>  压缩：未知<br>  .Z———————————————<br>  解压：uncompress FileName.Z<br>  压缩：compress FileName<br>  .tar.Z———————————————<br>  解压：tar Zxvf FileName.tar.Z<br>  压缩：tar Zcvf FileName.tar.Z DirName<br>  .zip———————————————<br>  解压：unzip FileName.zip<br>  压缩：zip FileName.zip DirName<br>  .rar———————————————<br>  解压：rar x FileName.rar<br>  压缩：rar a FileName.rar DirName</p>
+</blockquote>
+</li>
+</ul>
+
+            
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/all-tags/ubuntu/">ubuntu</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/02/26/jsUtil/" data-tooltip="js 常用开发操作" aria-label="PREVIOUS: js 常用开发操作">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/02/03/gulp/" data-tooltip="gulp" aria-label="NEXT: gulp">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://fuersite.coding.me/2018/02/08/ubuntu/" title="Share on Facebook">
+                    <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://fuersite.coding.me/2018/02/08/ubuntu/" title="Share on Twitter">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://fuersite.coding.me/2018/02/08/ubuntu/" title="Share on Google+">
+                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+                <li class="post-action">
+                    <a class="post-action-btn btn btn--default" href="#gitment">
+                         <i class="fa fa-comment-o"></i>
+                    </a>
+                </li>
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+                <div id="gitment"></div>
+            
+        
+
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2020 虚空生花. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/02/26/jsUtil/" data-tooltip="js 常用开发操作" aria-label="PREVIOUS: js 常用开发操作">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/02/03/gulp/" data-tooltip="gulp" aria-label="NEXT: gulp">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://fuersite.coding.me/2018/02/08/ubuntu/" title="Share on Facebook">
+                    <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://fuersite.coding.me/2018/02/08/ubuntu/" title="Share on Twitter">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://fuersite.coding.me/2018/02/08/ubuntu/" title="Share on Google+">
+                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+                <li class="post-action">
+                    <a class="post-action-btn btn btn--default" href="#gitment">
+                         <i class="fa fa-comment-o"></i>
+                    </a>
+                </li>
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+    <i id="btn-close-shareoptions" class="fa fa-close"></i>
+    <ul class="share-options">
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://fuersite.coding.me/2018/02/08/ubuntu/">
+                    <i class="fa fa-facebook-official" aria-hidden="true"></i><span>Share on Facebook</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://fuersite.coding.me/2018/02/08/ubuntu/">
+                    <i class="fa fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://fuersite.coding.me/2018/02/08/ubuntu/">
+                    <i class="fa fa-google-plus" aria-hidden="true"></i><span>Share on Google+</span>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/favicon.jpg" alt="Ivin Chow"/>
+        
+            <h4 id="about-card-name">虚空生花</h4>
+        
+            <div id="about-card-bio"><p>purchase perfect</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>IT Engineer</p>
+
+            </div>
+        
+        
+    </div>
+</div>
+
+        
+            <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-close"></i></span>
+            <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    />
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">no post found</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/03/git/">
+                            <img class="media-image" src="http://fuersite.coding.me/images/git.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/03/git/">
+                            <h3 class="media-heading">git 安装与使用</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Feb 3, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>Git 安装与使用<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/03/webpack/">
+                            <img class="media-image" src="http://fuersite.coding.me/images/webpack.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/03/webpack/">
+                            <h3 class="media-heading">webpack</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Feb 3, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>webpack 使用与配置<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/03/gulp/">
+                            <h3 class="media-heading">gulp</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Feb 3, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>gulp 使用与配置<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/08/ubuntu/">
+                            <img class="media-image" src="http://fuersite.coding.me/images/ubuntu.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/08/ubuntu/">
+                            <h3 class="media-heading">ubuntu</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Feb 8, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>ubuntu 常用操作<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/26/jsUtil/">
+                            <h3 class="media-heading">js 常用开发操作</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Feb 26, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>DOM选择，数组排序， 遍历，　去重，　字符串处理，　类型转换，　正则表达式，　日期时间处理, 拷贝, 相等问题<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/03/19/nginx/">
+                            <h3 class="media-heading">nginx</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Mar 19, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>ngnix 使用与配置<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/03/30/koa2/">
+                            <h3 class="media-heading">koa2 使用</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Mar 30, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>ko2 从零到亿<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/04/24/jsEventPriority/">
+                            <h3 class="media-heading">jsEventPriority</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Apr 24, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>JS Onblur 与Onclick事件冲突的解决办法<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/04/24/phpLive/">
+                            <img class="media-image" src="http://fuersite.coding.me/images/php.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/04/24/phpLive/">
+                            <h3 class="media-heading">php生命周期</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Apr 24, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>学习框架先从生命周期开始<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/04/24/websocket/">
+                            <h3 class="media-heading">websocket</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Apr 24, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="no post found"
+                data-message-one="1 post found"
+                data-message-other="{n} posts found">
+                27 posts found
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-peofhqjkzcghmndknakluequy1y6owxdwpaqyju9ntl9zxnk7rdolb3rjjoj.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script type="text/javascript">
+            (function() {
+                function render() {
+                    new Gitment({
+                        id: 'http://fuersite.coding.me/2018/02/08/ubuntu/',
+                        owner: 'fuersite',
+                        repo: 'fuersite.github.io',
+                        oauth: {
+                            client_id: '76a3caa4a47a4a371a19',
+                            client_secret: '7a1f729bbb40aea47d9bad99f6dd4a8ad933f901',
+                        }
+                    }).render('gitment');
+                }
+                var gc = document.createElement('script');
+                gc.type = 'text/javascript';
+                gc.src = '//fuersite.github.io/assets/js/gitment.js';
+                gc.charset = 'UTF-8';
+                gc.onload = render;
+                gc.async = true;
+                document.querySelector('body').appendChild(gc);
+                var gcs = document.createElement('link');
+                gcs.href = '//imsun.github.io/gitment/style/default.css';
+                gcs.type = 'text/css';
+                gcs.rel = 'stylesheet';
+                gcs.media = 'screen,print';
+                document.querySelector('head').appendChild(gcs);
+            })();
+	    </script>
+    
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.min.js"></script>
+    <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script>
+        var algoliaClient = algoliasearch('OD5GIWUQDZ', '36d3f5cf4fe44de6f33bb94ca9be7d79');
+        var algoliaIndex = algoliaClient.initIndex('fuersite-hexo-blog');
+    </script>
+    <script async src="https://fuersite.github.io/script/busuanzi.pure.mini.js"></script>
+
+
+    </body>
+</html>

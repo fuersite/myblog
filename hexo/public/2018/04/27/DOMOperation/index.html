@@ -1,0 +1,918 @@
+
+<!DOCTYPE html>
+<html lang="en,zh-cn,default">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="baidu-site-verification" content="PvLt8NSpTt" />
+    <meta name="generator" content="恬淡如诗，烈火如歌">
+    <title>DOM 操作知识 - 恬淡如诗，烈火如歌</title>
+    <meta name="author" content="虚空生花">
+    
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <meta name="description" content="DOM 操作小知识">
+<meta name="keywords" content="javascript,html,scrollTop,clientHeight">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="DOM 操作知识">
+<meta property="og:url" content="http://fuersite.coding.me/2018/04/27/DOMOperation/index.html">
+<meta property="og:site_name" content="恬淡如诗，烈火如歌">
+<meta property="og:description" content="DOM 操作小知识">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://fuersite.coding.me/images/dom.png">
+<meta property="og:updated_time" content="2019-08-28T01:21:26.071Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DOM 操作知识">
+<meta name="twitter:description" content="DOM 操作小知识">
+<meta name="twitter:image" content="http://fuersite.coding.me/images/dom.png">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://fuersite.coding.me/assets/images/favicon.jpg"/>
+    
+    
+    
+    
+    <!-- code highlight -->
+    <link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/solarized_dark.min.css">
+    <script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+    <!-- <script src="https://hm.baidu.com/hm.js?231aaeebdac35a97af1cd3bfe845b227"></script> -->
+    <script defer>hljs.initHighlightingOnLoad();</script>
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-pz4cc6y13wt2trzqa8l3n9v0yykr0sstdaheem7qj628nhjmhp9pfawvqawz.min.css">
+    <!--STYLES END-->
+    
+
+    
+    <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?1d8a491a2e41a094d5c280424bc1e071";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+
+    
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+
+
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+<header id="header" data-behavior="5">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">恬淡如诗，烈火如歌</a>
+    </div>
+    
+        
+            <a  class="header-right-icon open-algolia-search"
+                href="#search">
+        
+        
+            <i class="fa fa-lg fa-search"></i>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="5">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/favicon.jpg" alt="Ivin Chow"/>
+                </a>
+                <h4 class="sidebar-profile-name">虚空生花</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>purchase perfect</p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/ "
+                            
+                            title="Home"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-categories"
+                            
+                            title="Categories"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-tags"
+                            
+                            title="Tags"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link open-algolia-search"
+                             href="#search"
+                            
+                            title="Search"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-search" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Search</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="#about"
+                            
+                            title="About"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-question" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">About</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://github.com/fuersite/fuersite.github.io" target="_blank" rel="noopener" title="GitHub">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+        <ul class="sidebar-buttons">
+          <li class="sidebar-button">
+            <a class="sidebar-button-link" href="javascript:void(0)" title="访问总人数">
+                <i class="sidebar-button-icon fa fa-lg fa-eye" aria-hidden="true"></i>
+                <span class="sidebar-button-desc"> TotalVisitor <span id="busuanzi_value_site_uv"></span>
+                </span>
+            </a>
+          </li>
+        </ul>
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="5"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            DOM 操作知识
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time itemprop="datePublished" datetime="2018-04-27T15:20:06+08:00">
+	
+		    Apr 27, 2018
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/all-categories/javascript/">javascript</a>
+
+
+    
+</div>
+
+    
+    <span id="busuanzi_container_page_pv" style="font-size: 1.2rem; color: #9eabb3;">
+        <a href="javascript:void(0);" title="阅读总量"><i class="fa fa-lg fa-eye"></i>  <span id="busuanzi_value_page_pv" style="font-size: 1.5rem"></span></a>
+    </span>
+</div>
+
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>DOM 操作小知识</p>
+<a id="more"></a>
+<h3 id="元素遍历（JavaScript高级程序设计提供方法）"><a href="#元素遍历（JavaScript高级程序设计提供方法）" class="headerlink" title="元素遍历（JavaScript高级程序设计提供方法）"></a>元素遍历（JavaScript高级程序设计提供方法）</h3><p>Element Traversal API为DOM元素添加了以下5个属性。</p>
+<ul>
+<li><p>childElementCount：返回子元素（不包括文本节点和注释）的个数。</p>
+</li>
+<li><p>firstElementChild：指向第一个子元素；firstChild的元素版。</p>
+</li>
+<li><p>lastElementChild：指向最后一个子元素；lastChild的元素版。</p>
+</li>
+<li><p>previousElementSibling：指向前一个同辈元素；previousSibling的元素版。</p>
+</li>
+<li><p>nextElementSibling：指向后一个同辈元素；nextSibling的元素版。</p>
+</li>
+</ul>
+<p>1、 过去，要跨浏览器遍历某元素的所有子元素，需要像下面这样写代码。</p>
+<pre><code class="javascript">
+  var i,
+      len,
+      child = element.firstChild;
+  while(child != element.lastChild){
+      if (child.nodeType == 1){   //检查是不是元素
+         processChild(child);
+      }
+      child = child.nextSibling;
+  }
+</code></pre>
+<font size="4"></font>
+
+2、 而使用Element Traversal新增的元素，代码会更简洁。(减少了一个nodeType判断)
+<pre><code class="javascript">
+  var i,
+      len,
+      child = element.firstElementChild;
+  while(child != element.lastElementChild){
+      processChild(child);   //已知其是元素
+      child = child.nextElementSibling;
+  }
+</code></pre>
+
+<hr>
+<h3 id="检查是DOM否包含某子节点（JavaScript高级程序设计提供方法）"><a href="#检查是DOM否包含某子节点（JavaScript高级程序设计提供方法）" class="headerlink" title="检查是DOM否包含某子节点（JavaScript高级程序设计提供方法）"></a>检查是DOM否包含某子节点（JavaScript高级程序设计提供方法）</h3><ol>
+<li><p><code>contains()</code>方法<br>在实际开发中，经常需要知道某个节点是不是另一个节点的后代。IE为此率先引入了contains()方法，以便不通过在DOM文档树中查找即可获得这个信息。调用contains()方法的应该是祖先节点，也就是搜索开始的节点，这个方法接收一个参数，即要检测的后代节点。如果被检测的节点是后代节点，该方法返回true；否则，返回false。以下是一个例子：</p>
+<pre><code class="javascript">
+ alert(document.documentElement.contains(document.body));    //true
+</code></pre>
+</li>
+<li><p><code>compareDocumentPosition()</code> 方法<br>使用DOM Level 3 compareDocumentPosition()也能够确定节点间的关系。支持这个方法的浏览器有IE9+、Firefox、Safari、Opera 9.5+和Chrome。如前所述，这个方法用于确定两个节点间的关系，返回一个表示该关系的位掩码（ bitmask）。下表列出了这个位掩码的值。</p>
+<pre><code class="javascript">
+var result = document.documentElement.compareDocumentPosition(document.body);
+alert(!!(result & 16));
+</code></pre>
+
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">掩码</th>
+<th style="text-align:right">节点关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">1</td>
+<td style="text-align:right">无关（给定的节点不在当前文档中）</td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td style="text-align:right">居前（给定的节点在DOM树中位于参考节点之前）</td>
+</tr>
+<tr>
+<td style="text-align:right">4</td>
+<td style="text-align:right">居后（给定的节点在DOM树中位于参考节点之后）</td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td style="text-align:right">包含（给定的节点是参考节点的祖先）</td>
+</tr>
+<tr>
+<td style="text-align:right">16</td>
+<td style="text-align:right">被包含（给定的节点是参考节点的后代）</td>
+</tr>
+</tbody>
+</table>
+<p>结合以上两个方法，封装一个检查方法：</p>
+<pre><code class="javascript">
+function contains(refNode, otherNode){
+    if (typeof refNode.contains == "function" &&
+            (!client.engine.webkit || client.engine.webkit >= 522)){
+        return refNode.contains(otherNode);
+    } else if (typeof refNode.compareDocumentPosition == "function"){
+        return !!(refNode.compareDocumentPosition(otherNode) & 16);
+    } else {
+        var node = otherNode.parentNode;
+        do {
+            if (node === refNode){
+                return true;
+            } else {
+                node = node.parentNode;
+            }
+        } while (node !== null);
+        return false;
+    }
+}
+</code></pre>
+
+<hr>
+<h3 id="理解-DOM-clientWidth-clientHeight-offsetLeft-offsetTop-scroll-…"><a href="#理解-DOM-clientWidth-clientHeight-offsetLeft-offsetTop-scroll-…" class="headerlink" title="理解 DOM clientWidth, clientHeight, offsetLeft, offsetTop, scroll …"></a>理解 DOM clientWidth, clientHeight, offsetLeft, offsetTop, scroll …</h3><p>结构图<br><img src="http://fuersite.coding.me/images/dom.png" alt="dom"></p>
+<ul>
+<li>clientWidth, clientHeight 为div 内容宽度和长度</li>
+<li>offsetWidht, offsetHeight 为div 内容+border 的宽度和长度</li>
+<li>scrollWidth, scrollHeight 为div 里面 <code>实际</code> 内容的宽度和长度（overflow）</li>
+<li>scrollTop， 为滚动条向下滚动时向上超出div内容的长度</li>
+<li>scrollWidth, 为滚动条向右滚动时向左超出div内容的长度</li>
+</ul>
+
+            
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/all-tags/clientHeight/">clientHeight</a> <a class="tag tag--primary tag--small t-link" href="/all-tags/html/">html</a> <a class="tag tag--primary tag--small t-link" href="/all-tags/javascript/">javascript</a> <a class="tag tag--primary tag--small t-link" href="/all-tags/scrollTop/">scrollTop</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/04/28/reponseCode/" data-tooltip="http-请求状态码" aria-label="PREVIOUS: http-请求状态码">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/04/24/websocket/" data-tooltip="websocket" aria-label="NEXT: websocket">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://fuersite.coding.me/2018/04/27/DOMOperation/" title="Share on Facebook">
+                    <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://fuersite.coding.me/2018/04/27/DOMOperation/" title="Share on Twitter">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://fuersite.coding.me/2018/04/27/DOMOperation/" title="Share on Google+">
+                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+                <li class="post-action">
+                    <a class="post-action-btn btn btn--default" href="#gitment">
+                         <i class="fa fa-comment-o"></i>
+                    </a>
+                </li>
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+                <div id="gitment"></div>
+            
+        
+
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2020 虚空生花. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/04/28/reponseCode/" data-tooltip="http-请求状态码" aria-label="PREVIOUS: http-请求状态码">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/04/24/websocket/" data-tooltip="websocket" aria-label="NEXT: websocket">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://fuersite.coding.me/2018/04/27/DOMOperation/" title="Share on Facebook">
+                    <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://fuersite.coding.me/2018/04/27/DOMOperation/" title="Share on Twitter">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://fuersite.coding.me/2018/04/27/DOMOperation/" title="Share on Google+">
+                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+                <li class="post-action">
+                    <a class="post-action-btn btn btn--default" href="#gitment">
+                         <i class="fa fa-comment-o"></i>
+                    </a>
+                </li>
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+    <i id="btn-close-shareoptions" class="fa fa-close"></i>
+    <ul class="share-options">
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://fuersite.coding.me/2018/04/27/DOMOperation/">
+                    <i class="fa fa-facebook-official" aria-hidden="true"></i><span>Share on Facebook</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://fuersite.coding.me/2018/04/27/DOMOperation/">
+                    <i class="fa fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://fuersite.coding.me/2018/04/27/DOMOperation/">
+                    <i class="fa fa-google-plus" aria-hidden="true"></i><span>Share on Google+</span>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/favicon.jpg" alt="Ivin Chow"/>
+        
+            <h4 id="about-card-name">虚空生花</h4>
+        
+            <div id="about-card-bio"><p>purchase perfect</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>IT Engineer</p>
+
+            </div>
+        
+        
+    </div>
+</div>
+
+        
+            <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-close"></i></span>
+            <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    />
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">no post found</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/03/git/">
+                            <img class="media-image" src="http://fuersite.coding.me/images/git.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/03/git/">
+                            <h3 class="media-heading">git 安装与使用</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Feb 3, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>Git 安装与使用<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/03/webpack/">
+                            <img class="media-image" src="http://fuersite.coding.me/images/webpack.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/03/webpack/">
+                            <h3 class="media-heading">webpack</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Feb 3, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>webpack 使用与配置<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/03/gulp/">
+                            <h3 class="media-heading">gulp</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Feb 3, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>gulp 使用与配置<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/08/ubuntu/">
+                            <img class="media-image" src="http://fuersite.coding.me/images/ubuntu.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/08/ubuntu/">
+                            <h3 class="media-heading">ubuntu</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Feb 8, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>ubuntu 常用操作<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/02/26/jsUtil/">
+                            <h3 class="media-heading">js 常用开发操作</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Feb 26, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>DOM选择，数组排序， 遍历，　去重，　字符串处理，　类型转换，　正则表达式，　日期时间处理, 拷贝, 相等问题<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/03/19/nginx/">
+                            <h3 class="media-heading">nginx</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Mar 19, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>ngnix 使用与配置<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/03/30/koa2/">
+                            <h3 class="media-heading">koa2 使用</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Mar 30, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>ko2 从零到亿<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/04/24/jsEventPriority/">
+                            <h3 class="media-heading">jsEventPriority</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Apr 24, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>JS Onblur 与Onclick事件冲突的解决办法<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/04/24/phpLive/">
+                            <img class="media-image" src="http://fuersite.coding.me/images/php.png" width="90" height="90"/>
+                        </a>
+                    </div>
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/04/24/phpLive/">
+                            <h3 class="media-heading">php生命周期</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Apr 24, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>学习框架先从生命周期开始<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://fuersite.coding.me/2018/04/24/websocket/">
+                            <h3 class="media-heading">websocket</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Apr 24, 2018
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="no post found"
+                data-message-one="1 post found"
+                data-message-other="{n} posts found">
+                27 posts found
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-peofhqjkzcghmndknakluequy1y6owxdwpaqyju9ntl9zxnk7rdolb3rjjoj.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script type="text/javascript">
+            (function() {
+                function render() {
+                    new Gitment({
+                        id: 'http://fuersite.coding.me/2018/04/27/DOMOperation/',
+                        owner: 'fuersite',
+                        repo: 'fuersite.github.io',
+                        oauth: {
+                            client_id: '76a3caa4a47a4a371a19',
+                            client_secret: '7a1f729bbb40aea47d9bad99f6dd4a8ad933f901',
+                        }
+                    }).render('gitment');
+                }
+                var gc = document.createElement('script');
+                gc.type = 'text/javascript';
+                gc.src = '//fuersite.github.io/assets/js/gitment.js';
+                gc.charset = 'UTF-8';
+                gc.onload = render;
+                gc.async = true;
+                document.querySelector('body').appendChild(gc);
+                var gcs = document.createElement('link');
+                gcs.href = '//imsun.github.io/gitment/style/default.css';
+                gcs.type = 'text/css';
+                gcs.rel = 'stylesheet';
+                gcs.media = 'screen,print';
+                document.querySelector('head').appendChild(gcs);
+            })();
+	    </script>
+    
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.min.js"></script>
+    <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script>
+        var algoliaClient = algoliasearch('OD5GIWUQDZ', '36d3f5cf4fe44de6f33bb94ca9be7d79');
+        var algoliaIndex = algoliaClient.initIndex('fuersite-hexo-blog');
+    </script>
+    <script async src="https://fuersite.github.io/script/busuanzi.pure.mini.js"></script>
+
+
+    </body>
+</html>
